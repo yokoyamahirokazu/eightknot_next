@@ -1,11 +1,12 @@
 import Head from 'next/head'
 import Image from 'next/image'
-
 import Content from './components/content'
+import { client } from "../libs/client";
+import Link from 'next/link'
 
 
 
-export default function Home() {
+export default function Home({news}) {
   return (
     <div>
       <Head>
@@ -18,9 +19,37 @@ export default function Home() {
         <h1>
          TOP PAGE
         </h1>
+
+        <ul>
+        {news.map((news) => (
+          <li key={news.id}>
+            {news.blankLink ? (
+            <Link href={news.blankLink}>
+              <a target="_blank">{news.title}</a>
+            </Link>
+            ) : (
+            <Link href={`/news/${news.id}`}>
+              <a>{news.title}</a>
+            </Link>
+            )}
+          </li>
+        ))}
+      </ul>
+
       </main>
   </Content>
 
     </div>
   )
 }
+
+
+export const getStaticProps = async () => {
+  const data = await client.get({ endpoint: "news" });
+
+  return {
+    props: {
+      news: data.contents,
+    },
+  };
+};
