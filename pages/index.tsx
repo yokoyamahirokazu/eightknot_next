@@ -9,14 +9,18 @@ interface Article {
   title: string;
   publishedAt: string;
   blankLink: string;
+  thumb: string;
+  pubDate: string;
+  link: string;
+  contentSnippet: string;
 }
-
 interface Contents {
   contents: Article[];
 }
 
 export default function Home({
   newsItem,
+  noteItem,
 }: {
   newsItem: { id: string; title: string; publishedAt: string; blankLink: string }[];
 }): JSX.Element {
@@ -54,8 +58,8 @@ export default function Home({
             ))}
           </ul> */}
 
-          {/* <ul>
-            {note.map((note) => (
+          <ul>
+            {noteItem.map((note) => (
               <li key={note.title}>
                 <img src={note.thumb} alt={note.title} />
                 {note.title}
@@ -64,7 +68,7 @@ export default function Home({
                 {note.contentSnippet}
               </li>
             ))}
-          </ul> */}
+          </ul>
         </main>
       </Content>
     </div>
@@ -84,7 +88,7 @@ export const getStaticProps = async () => {
 
   return {
     props: {
-      note: rssNote.items,
+      noteItem: rssNote.items,
       newsItem: newsData.contents,
     },
   };
