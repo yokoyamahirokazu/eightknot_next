@@ -4,10 +4,21 @@ import Content from './components/content';
 import { client } from '../libs/client';
 import Link from 'next/link';
 
+interface Article {
+  id: string;
+  title: string;
+  publishedAt: string;
+  blankLink: string;
+}
+
+interface Contents {
+  contents: Article[];
+}
+
 export default function Home({
-  news,
+  newsItem,
 }: {
-  news: { id: string; title: string; publishedAt: string; blankLink: string }[];
+  newsItem: { id: string; title: string; publishedAt: string; blankLink: string }[];
 }): JSX.Element {
   return (
     <div>
@@ -20,7 +31,7 @@ export default function Home({
         <main>
           <h1>TOP PAGE</h1>
           <ul>
-            {news.map((news) => (
+            {newsItem.map((news) => (
               <li key={news.id}>
                 {news.blankLink ? (
                   <Link href={news.blankLink}>
@@ -73,8 +84,8 @@ export const getStaticProps = async () => {
 
   return {
     props: {
-      news: data.contents,
       note: rssNote.items,
+      newsItem: data.contents,
     },
   };
 };
