@@ -13,7 +13,6 @@ import { useState } from 'react';
 export default function Header(props) {
   const [isModal, setIsModal] = useState(false);
   const menuOpen = isModal ? `${Styles.header_nav} ${Styles.active}` : Styles.header_nav;
-
   return (
     <div>
       <header className={Styles.header}>
