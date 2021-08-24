@@ -15,6 +15,7 @@ interface Article {
   contentSnippet: string;
   image: string;
   name: string;
+  url: string;
 }
 interface Contents {
   contents: Article[];
@@ -30,6 +31,7 @@ export default function Home({
     id: string;
     name: string;
     image: string;
+    url: string;
   }[];
   noteItem: {
     thumb: string;
