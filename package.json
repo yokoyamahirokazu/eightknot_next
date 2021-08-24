@@ -11,7 +11,9 @@
     "format": "prettier --write --ignore-path .gitignore './**/*.{js,jsx,ts,tsx,json,css}'"
   },
   "dependencies": {
+    "@svgr/webpack": "^5.5.0",
     "@types/react-dom": "^17.0.9",
+    "classnames": "^2.3.1",
     "isomorphic-unfetch": "^3.1.0",
     "microcms-js-sdk": "^1.2.0",
     "next": "^11.1.0",

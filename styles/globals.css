@@ -1,9 +1,64 @@
+:root {
+  --primary-050: #e6eff5;
+  --primary-100: #cce0eb;
+  --primary-200: #99c0d7;
+  --primary-300: #66a1c3;
+  --primary-400: #3381af;
+  --primary-500: #00629b;
+  --primary-600: #00588b;
+  --primary-700: #004f7d;
+  --primary-800: #004770;
+  --primary-900: #004065;
+
+  --secondary-050: #f5e6ef;
+  --secondary-100: #ebccdf;
+  --secondary-200: #d799be;
+  --secondary-300: #c3669e;
+  --secondary-400: #af337d;
+  --secondary-500: #9b005d;
+  --secondary-600: #8b0054;
+  --secondary-700: #7d004c;
+  --secondary-800: #700044;
+  --secondary-900: #65003d;
+
+  --tertiary-050: #f5f3e6;
+  --tertiary-100: #ebe6cc;
+  --tertiary-200: #d7cd99;
+  --tertiary-300: #c3b566;
+  --tertiary-400: #af9c33;
+  --tertiary-500: #9b8300;
+  --tertiary-600: #8b7600;
+  --tertiary-700: #7d6a00;
+  --tertiary-800: #705f00;
+  --tertiary-900: #655500;
+
+  --white: #ffffff;
+
+  --border-lightgray: rgba(0, 0, 0, 0.1);
+  --border-lightwhite: rgba(255, 255, 255, 0.4);
+
+  --font-obvia: obvia, sans-serif;
+}
+
+html {
+  line-height: normal;
+  scroll-behavior: smooth;
+}
+
 html,
 body {
-  padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell,
-    Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  padding: 0;
+  font-size: 15px;
+}
+
+@media screen and (max-width: 1080px) {
+  html,
+  body {
+    margin: 0;
+    padding: 0;
+    font-size: 14px;
+  }
 }
 
 a {
@@ -13,4 +68,68 @@ a {
 
 * {
   box-sizing: border-box;
+}
+
+body {
+  font-family: noto-sans-cjk-jp, sans-serif, ヒラギノ角ゴPro W3, Hiragino Kaku Gothic Pro,
+    游ゴシック, Yu Gothic, 游ゴシック体, YuGothic, メイリオ, Meiryo, sans-serif;
+  color: var(--primary-900);
+}
+
+/* reset */
+
+div {
+  margin: 0;
+  padding: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+p,
+button,
+a {
+  margin: 0;
+  padding: 0;
+  line-height: normal;
+}
+
+button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  padding: 0;
+  appearance: none;
+}
+
+a,
+button {
+  -webkit-transition: all 0.2s ease;
+  -moz-transition: all 0.2s ease;
+  -o-transition: all 0.2s ease;
+  transition: all 0.2s ease;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* main */
+
+main {
+  margin: 0 0 0;
+  overflow: hidden;
+  z-index: 3;
 }

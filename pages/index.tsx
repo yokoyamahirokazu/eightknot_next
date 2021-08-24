@@ -90,11 +90,14 @@ export default function Home({
           <ul>
             {noteItem.map((note) => (
               <li key={note.title}>
-                <img src={note.thumb} alt={note.title} />
-                {note.title}
-                {note.pubDate}
-                {note.link}
-                {note.contentSnippet}
+                <Link href={note.link}>
+                  <a target='_blank'>
+                    <img src={note.thumb} alt={note.title} />
+                    {note.title}
+                    {note.pubDate}
+                    {note.contentSnippet}
+                  </a>
+                </Link>
               </li>
             ))}
           </ul>
