@@ -27,6 +27,7 @@ export default function Home({
 }: {
   newsItem: { id: string; title: string; publishedAt: string; blankLink: string }[];
   staffItem: {
+    id: string;
     name: string;
     image: string;
   }[];
