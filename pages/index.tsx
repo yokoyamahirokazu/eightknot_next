@@ -4,7 +4,11 @@ import Content from './components/content';
 import { client } from '../libs/client';
 import Link from 'next/link';
 
-export default function Home({ news, staff, note, post }) {
+export default function Home({
+  news,
+}: {
+  news: { id: string; title: string; publishedAt: string; blankLink: string }[];
+}): JSX.Element {
   return (
     <div>
       <Head>
@@ -39,7 +43,7 @@ export default function Home({ news, staff, note, post }) {
             ))}
           </ul> */}
 
-          <ul>
+          {/* <ul>
             {note.map((note) => (
               <li key={note.title}>
                 <img src={note.thumb} alt={note.title} />
@@ -49,7 +53,7 @@ export default function Home({ news, staff, note, post }) {
                 {note.contentSnippet}
               </li>
             ))}
-          </ul>
+          </ul> */}
         </main>
       </Content>
     </div>
@@ -60,7 +64,6 @@ import Parser from 'rss-parser';
 
 export const getStaticProps = async () => {
   const data = await client.get({ endpoint: 'news' });
-
   const parser = new Parser({
     customFields: {
       item: [['media:thumbnail', 'thumb', { keepArray: true }]],
