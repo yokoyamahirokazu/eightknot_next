@@ -23,6 +23,13 @@ export default function Home({
   noteItem,
 }: {
   newsItem: { id: string; title: string; publishedAt: string; blankLink: string }[];
+  noteItem: {
+    thumb: string;
+    title: string;
+    pubDate: string;
+    link: string;
+    contentSnippet: string;
+  }[];
 }): JSX.Element {
   return (
     <div>
