@@ -59,8 +59,8 @@ export default function Home({ news, staff, note, post }) {
 import Parser from 'rss-parser';
 
 export const getStaticProps = async () => {
-  const newsData = await client.get({ endpoint: 'news' });
-  const staffData = await client.get({ endpoint: 'staff' });
+  const data = await client.get({ endpoint: 'news' });
+
   const parser = new Parser({
     customFields: {
       item: [['media:thumbnail', 'thumb', { keepArray: true }]],
@@ -70,8 +70,7 @@ export const getStaticProps = async () => {
 
   return {
     props: {
-      news: newsData.contents,
-      // staff: staffData.contents,
+      news: data.contents,
       note: rssNote.items,
     },
   };
