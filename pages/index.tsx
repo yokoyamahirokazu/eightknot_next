@@ -13,7 +13,9 @@ interface Article {
   pubDate: string;
   link: string;
   contentSnippet: string;
-  image: Object;
+  image: {
+    url: string;
+  };
   name: string;
   post: string;
   url: string;
@@ -27,13 +29,19 @@ export default function Home({
   staffItem,
   noteItem,
 }: {
-  newsItem: { id: string; title: string; publishedAt: string; blankLink: string }[];
+  newsItem: {
+    id: string;
+    title: string;
+    publishedAt: string;
+    blankLink: string;
+  }[];
   staffItem: {
     id: string;
     name: string;
     post: string;
-    image: Object;
-    url: string;
+    image: {
+      url: string;
+    };
   }[];
   noteItem: {
     thumb: string;
@@ -101,7 +109,6 @@ import Parser from 'rss-parser';
 export const getStaticProps = async () => {
   const newsData: Contents = await client.get({ endpoint: 'news' });
   const staffData: Contents = await client.get({ endpoint: 'staff' });
-  console.log(staffData);
 
   const parser = new Parser({
     customFields: {
