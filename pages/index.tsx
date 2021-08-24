@@ -30,14 +30,14 @@ export default function Home({ news, staff, note, post }) {
               </li>
             ))}
           </ul>
-          <ul>
+          {/* <ul>
             {staff.map((staff) => (
               <li key={staff.id}>
                 <Image src={staff.image.url} quality={100} width={100} height={100} />
                 {staff.name}
               </li>
             ))}
-          </ul>
+          </ul> */}
 
           <ul>
             {note.map((note) => (
@@ -47,7 +47,6 @@ export default function Home({ news, staff, note, post }) {
                 {note.pubDate}
                 {note.link}
                 {note.contentSnippet}
-                {console.log(note)}
               </li>
             ))}
           </ul>
@@ -72,7 +71,7 @@ export const getStaticProps = async () => {
   return {
     props: {
       news: newsData.contents,
-      staff: staffData.contents,
+      // staff: staffData.contents,
       note: rssNote.items,
     },
   };
