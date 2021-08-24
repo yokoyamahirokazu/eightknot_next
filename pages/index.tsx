@@ -13,6 +13,8 @@ interface Article {
   pubDate: string;
   link: string;
   contentSnippet: string;
+  image: string;
+  name: string;
 }
 interface Contents {
   contents: Article[];
@@ -20,9 +22,14 @@ interface Contents {
 
 export default function Home({
   newsItem,
+  staffItem,
   noteItem,
 }: {
   newsItem: { id: string; title: string; publishedAt: string; blankLink: string }[];
+  staffItem: {
+    name: string;
+    image: string;
+  }[];
   noteItem: {
     thumb: string;
     title: string;
@@ -56,14 +63,14 @@ export default function Home({
               </li>
             ))}
           </ul>
-          {/* <ul>
-            {staff.map((staff) => (
+          <ul>
+            {staffItem.map((staff) => (
               <li key={staff.id}>
                 <Image src={staff.image.url} quality={100} width={100} height={100} />
                 {staff.name}
               </li>
             ))}
-          </ul> */}
+          </ul>
 
           <ul>
             {noteItem.map((note) => (
@@ -86,6 +93,7 @@ import Parser from 'rss-parser';
 
 export const getStaticProps = async () => {
   const newsData: Contents = await client.get({ endpoint: 'news' });
+  const staffData: Contents = await client.get({ endpoint: 'staff' });
   const parser = new Parser({
     customFields: {
       item: [['media:thumbnail', 'thumb', { keepArray: true }]],
@@ -97,6 +105,7 @@ export const getStaticProps = async () => {
     props: {
       noteItem: rssNote.items,
       newsItem: newsData.contents,
+      staffItem: staffData.contents,
     },
   };
 };
