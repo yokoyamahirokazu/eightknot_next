@@ -74,7 +74,7 @@ export default function Home({
 import Parser from 'rss-parser';
 
 export const getStaticProps = async () => {
-  const newsData: Contents = await client.get({ endpoint: 'blog' });
+  const newsData: Contents = await client.get({ endpoint: 'news' });
   const parser = new Parser({
     customFields: {
       item: [['media:thumbnail', 'thumb', { keepArray: true }]],
