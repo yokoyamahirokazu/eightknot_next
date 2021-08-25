@@ -6,7 +6,7 @@ export default function Content({ children }) {
   return (
     <div>
       <Header></Header>
-      <div className={Styles.contents}>{children}</div>
+      <div className={Styles.contents_lower}>{children}</div>
       <Footer></Footer>
     </div>
   );

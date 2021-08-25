@@ -80,6 +80,10 @@
   padding-top: calc(100vw * 0.62 - 4vw);
   width: 100%;
 }
+.contents_lower {
+  padding-top: 100px;
+  width: 100%;
+}
 
 @media screen and (max-width: 840px) {
   .contents {
@@ -501,6 +505,19 @@ ul.vision_flex li:nth-child(even) .vision_flex_img {
 .vision_img {
   width: 60vw;
   height: 60vw;
+}
+
+@media screen and (max-width: 1300px) {
+  .vision_title span {
+    font-size: 6vw;
+  }
+  .vision_title {
+    font-size: 3vw;
+  }
+
+  ul.vision_flex li {
+    height: 70vw;
+  }
 }
 
 @media screen and (max-width: 767px) {
@@ -937,6 +954,7 @@ ul.partners li a img {
 
 .news_post_content img {
   margin: 0 0 0;
+  width: auto;
   max-width: 100%;
   height: auto;
 }
