@@ -1015,3 +1015,12 @@ ul.partners li a img {
     padding: 20px 0 0;
   }
 }
+.error {
+  color: var(--secondary-500);
+}
+
+.form {
+  background: #0e101c;
+  max-width: 400px;
+  margin: 0 auto;
+}
