@@ -1,5 +1,6 @@
 import { client } from '../../libs/client';
 import Content from '../components/content';
+import Moment from 'react-moment';
 
 interface Article {
   id: string;
@@ -20,7 +21,9 @@ export default function BlogId({ news }) {
     <Content>
       <main>
         <h1>{news.title}</h1>
-        <p>{news.publishedAt}</p>
+        <p>
+          <Moment format='YYYY.MM.DD'>{news.publishedAt}</Moment>
+        </p>
         <p>{news.category.name}</p>
         {news.blankLink && <p>{news.blankLink}</p>}
         <div
