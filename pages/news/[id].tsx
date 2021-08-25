@@ -1,6 +1,20 @@
 import { client } from '../../libs/client';
 import Content from '../components/content';
 
+interface Article {
+  id: string;
+  title: string;
+  category: {
+    name: string;
+  };
+  publishedAt: string;
+  blankLink: string;
+  body: string;
+}
+interface Contents {
+  contents: Article[];
+}
+
 export default function BlogId({ news }) {
   return (
     <Content>
@@ -20,7 +34,7 @@ export default function BlogId({ news }) {
 }
 
 export const getStaticPaths = async () => {
-  const data = await client.get({ endpoint: 'news' });
+  const data: Contents = await client.get({ endpoint: 'news' });
 
   const paths = data.contents.map((content) => `/news/${content.id}`);
   return { paths, fallback: false };
