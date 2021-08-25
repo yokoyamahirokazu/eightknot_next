@@ -488,7 +488,7 @@ ul.vision_flex li:nth-child(even) .vision_flex_img {
   border-radius: 50%;
 }
 
-.img_circle img {
+.img_circle_inner {
   width: 100%;
   height: 100%;
   position: absolute;
