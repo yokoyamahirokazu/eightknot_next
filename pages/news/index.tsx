@@ -27,14 +27,6 @@ interface Article {
   blankLink: string;
   thumb: string;
   pubDate: string;
-  link: string;
-  contentSnippet: string;
-  image: {
-    url: string;
-  };
-  name: string;
-  post: string;
-  url: string;
 }
 interface Contents {
   contents: Article[];
@@ -72,40 +64,42 @@ export default function NewsIndex({
               </div>
             </div>
             <div className={Styles.news_flex_right}>
-              <ul className={`${Styles.news_list} ${Styles.news_page}`}>
-                {newsItem.map((news) => (
-                  <li key={news.id}>
-                    {news.blankLink ? (
-                      <Link href={news.blankLink}>
-                        <a target='_blank'>
-                          <h3>
-                            <BlankIcon />
-                            {news.title}
-                          </h3>
-                          <p className={Styles.post_date}>
-                            <Moment format='YYYY.MM.DD'>{news.publishedAt}</Moment>
-                            <span className={Styles.category_name}>
-                              {news.category && `${news.category.name}`}
-                            </span>
-                          </p>
-                        </a>
-                      </Link>
-                    ) : (
-                      <Link href={`/news/${news.id}`}>
-                        <a>
-                          <h3>{news.title}</h3>
-                          <p className={Styles.post_date}>
-                            <Moment format='YYYY.MM.DD'>{news.publishedAt}</Moment>
-                            <span className={Styles.category_name}>
-                              {news.category && `${news.category.name}`}
-                            </span>
-                          </p>
-                        </a>
-                      </Link>
-                    )}
-                  </li>
-                ))}
-              </ul>
+              <div className={Styles.content_box_wrapper}>
+                <ul className={`${Styles.news_list} ${Styles.news_page}`}>
+                  {newsItem.map((news) => (
+                    <li key={news.id}>
+                      {news.blankLink ? (
+                        <Link href={news.blankLink}>
+                          <a target='_blank'>
+                            <h3>
+                              <BlankIcon />
+                              {news.title}
+                            </h3>
+                            <p className={Styles.post_date}>
+                              <Moment format='YYYY.MM.DD'>{news.publishedAt}</Moment>
+                              <span className={Styles.category_name}>
+                                {news.category && `${news.category.name}`}
+                              </span>
+                            </p>
+                          </a>
+                        </Link>
+                      ) : (
+                        <Link href={`/news/${news.id}`}>
+                          <a>
+                            <h3>{news.title}</h3>
+                            <p className={Styles.post_date}>
+                              <Moment format='YYYY.MM.DD'>{news.publishedAt}</Moment>
+                              <span className={Styles.category_name}>
+                                {news.category && `${news.category.name}`}
+                              </span>
+                            </p>
+                          </a>
+                        </Link>
+                      )}
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </div>
           </div>
         </section>
