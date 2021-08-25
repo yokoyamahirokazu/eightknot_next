@@ -699,6 +699,10 @@ ul.blog li a {
 ul.blog li a:hover {
   background-color: var(--primary-050);
 }
+ul.blog li a img {
+  width: 100%;
+  height: auto;
+}
 
 .blog_thumbnail {
   width: 100%;

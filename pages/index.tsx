@@ -327,7 +327,7 @@ export default function Home({
                   <li key={note.title}>
                     <Link href={note.link}>
                       <a target='_blank'>
-                        <img classNmae={Styles.blog_thumbnail} src={note.thumb} alt={note.title} />
+                        <img src={note.thumb} alt={note.title} />
 
                         <div className={Styles.blog_txt}>
                           <h3 className={Styles.blog_title}>{note.title}</h3>
