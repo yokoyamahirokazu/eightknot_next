@@ -1,18 +1,21 @@
 import { client } from '../../libs/client';
+import Content from '../components/content';
 
 export default function BlogId({ news }) {
   return (
-    <main>
-      <h1>{news.title}</h1>
-      <p>{news.publishedAt}</p>
-      <p>{news.category.name}</p>
-      {news.blankLink && <p>{news.blankLink}</p>}
-      <div
-        dangerouslySetInnerHTML={{
-          __html: `${news.body}`,
-        }}
-      />
-    </main>
+    <Content>
+      <main>
+        <h1>{news.title}</h1>
+        <p>{news.publishedAt}</p>
+        <p>{news.category.name}</p>
+        {news.blankLink && <p>{news.blankLink}</p>}
+        <div
+          dangerouslySetInnerHTML={{
+            __html: `${news.body}`,
+          }}
+        />
+      </main>
+    </Content>
   );
 }
 

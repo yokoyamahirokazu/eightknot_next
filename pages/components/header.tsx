@@ -82,12 +82,12 @@ export default function Header(props) {
             </li>
             <li className={Styles.sns_link}>
               <Link href='/contact'>
-                <a>
+                <a target='_blank'>
                   <FacebookIcon />
                 </a>
               </Link>
               <Link href='/contact'>
-                <a>
+                <a target='_blank'>
                   <TwitterIcon />
                 </a>
               </Link>

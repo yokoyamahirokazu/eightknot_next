@@ -1,0 +1,174 @@
+/* footer */
+
+.footer {
+  background-color: var(--primary-500);
+  color: var(--white);
+}
+
+.footer_inner {
+  padding: 4vw;
+  position: relative;
+}
+
+.footer_logo {
+  position: absolute;
+  right: 4vw;
+  top: 4vw;
+  width: 10vw;
+}
+
+.footer_logo svg {
+  fill: var(--white);
+  width: 100%;
+  height: 100%;
+}
+
+.footer_info {
+  margin: 4vw 0;
+  padding: 0;
+}
+
+.footer_company_name {
+  font-weight: bold;
+  margin: 0 0 2vw 0;
+  display: block;
+}
+
+.footer_company_address {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+.footer_company_address p {
+  margin: 0 4vw 0 0;
+  font-size: 0.75rem;
+}
+
+.footer_company_address p span {
+  display: block;
+  font-size: 0.9rem;
+}
+
+p.copyright {
+  font-size: 0.8rem;
+}
+
+ul.footer_nav {
+  list-style-type: none;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin: 0 0 0 0;
+  padding: 0;
+}
+
+ul.footer_nav li {
+  margin: 0 2vw 0 0;
+  padding: 0;
+}
+
+ul.footer_nav li a {
+  color: var(--white);
+  font-family: var(--font-obvia);
+  text-decoration: none;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+ul.footer_nav li a svg {
+  fill: var(--white);
+  width: 1rem;
+  height: 1rem;
+  margin: 0 0.2rem 0 0;
+}
+
+.footer_sns {
+  display: flex;
+  margin: 2vw 0 0 0;
+}
+
+.footer_sns a {
+  width: 24px;
+  height: 24px;
+  margin: 0 15px 0 0;
+}
+
+.footer_sns a svg {
+  fill: var(--white);
+  width: 100%;
+  height: 100%;
+}
+
+.page_top_btn {
+  position: fixed;
+  right: 15px;
+  bottom: 15px;
+  width: 50px;
+  height: 50px;
+  border-radius: 25px;
+  min-width: auto;
+  z-index: 999;
+  background-color: var(--primary-900);
+}
+
+.page_top_btn img {
+  width: 30px;
+  height: 30px;
+  margin: 0;
+}
+
+.page_top_btn-enter-active,
+.page_top_btn-leave-active {
+  transition: opacity 0.3s;
+}
+
+.page_top_btn-enter,
+.page_top_btn-leave-to {
+  opacity: 0;
+}
+
+@media screen and (max-width: 767px) {
+  .footer_inner {
+    padding: 5vw;
+  }
+
+  .footer_logo {
+    right: 5vw;
+    top: 5vw;
+    width: 24vw;
+  }
+
+  ul.footer_nav {
+    display: block;
+  }
+
+  ul.footer_nav li {
+    margin: 0 0 20px 0;
+    padding: 0;
+  }
+
+  .footer_info {
+    margin: 10vw 0;
+    padding: 0;
+  }
+
+  .footer_company_name {
+    margin: 0 0 5vw 0;
+  }
+
+  .footer_company_address {
+    display: block;
+  }
+
+  .footer_company_address p {
+    display: block;
+    margin: 0 0 3vw 0;
+  }
+
+  .footer_sns {
+    margin: 5vw 0 0 0;
+  }
+}

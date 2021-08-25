@@ -133,3 +133,10 @@ main {
   overflow: hidden;
   z-index: 3;
 }
+
+section {
+  padding: 0;
+  margin: 0;
+  position: relative;
+  z-index: 1;
+}
