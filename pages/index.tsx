@@ -1,7 +1,6 @@
 import Head from 'next/head';
 import Image from 'next/image';
 import Content from './components/content';
-import Date from './components/date';
 import { client } from '../libs/client';
 import Link from 'next/link';
 import Styles from '../styles/components.module.css';
