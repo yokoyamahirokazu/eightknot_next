@@ -1,5 +1,6 @@
 import Head from 'next/head';
 import Image from 'next/image';
+import dynamic from 'next/dynamic';
 import Content from './components/content';
 import { client } from '../libs/client';
 import Link from 'next/link';
@@ -18,6 +19,7 @@ import BgLogo from '../public/icon/EightKnot_mark_bg.svg';
 import Logo from '../public/icon/EightKnot_logo_horizontal.svg';
 import Eyecatch from '../public/icon/EightKnotEyecacthBg.svg';
 import Moment from 'react-moment';
+const ScrollRevealContainer = dynamic(import('../ScrollRevealContainer'), { ssr: false });
 
 interface Article {
   id: string;
@@ -80,7 +82,13 @@ export default function Home({
         <link rel='icon' href='/favicon.ico' />
       </Head>
       <div className={Styles.eyecatch}>
-        {/* <Eyecatch /> */}
+        {/* <Image
+          alt='アイキャッチ'
+          src='/EightKnotEyecacthBg.svg'
+          layout={'responsive'}
+          width={'1440'}
+          height={'820'}
+        /> */}
         <p className={Styles.catchcopy}>
           あらゆる水上モビリティを
           <br />
@@ -93,15 +101,19 @@ export default function Home({
             <div className={`${Styles.news_inner} ${Styles.news_flex}`}>
               <div className={Styles.news_flex_left}>
                 <div className={Styles.headline_box}>
-                  <h2 className={`${Styles.headline} ${Styles.white}`}>
-                    <NewsIcon />
-                    <span className={Styles.headline_txt}>News</span>
-                  </h2>
-                  <p className={Styles.sub_headline}>
-                    Notice from
-                    <br />
-                    the Our Company
-                  </p>
+                  <ScrollRevealContainer move='right'>
+                    <h2 className={`${Styles.headline} ${Styles.white}`}>
+                      <NewsIcon />
+                      <span className={Styles.headline_txt}>News</span>
+                    </h2>
+                  </ScrollRevealContainer>
+                  <ScrollRevealContainer move='right'>
+                    <p className={Styles.sub_headline}>
+                      Notice from
+                      <br />
+                      the Our Company
+                    </p>
+                  </ScrollRevealContainer>
                 </div>
               </div>
               <div className={Styles.news_flex_right}>
@@ -109,32 +121,36 @@ export default function Home({
                   {newsItem.map((news) => (
                     <li key={news.id}>
                       {news.blankLink ? (
-                        <Link href={news.blankLink}>
-                          <a target='_blank'>
-                            <h3>
-                              <BlankIcon />
-                              {news.title}
-                            </h3>
-                            <p className={Styles.post_date}>
-                              <Moment format='YYYY.MM.DD'>{news.publishedAt}</Moment>
-                              <span className={Styles.category_name}>
-                                {news.category && `${news.category.name}`}
-                              </span>
-                            </p>
-                          </a>
-                        </Link>
+                        <ScrollRevealContainer move='bottom'>
+                          <Link href={news.blankLink}>
+                            <a target='_blank'>
+                              <h3>
+                                <BlankIcon />
+                                {news.title}
+                              </h3>
+                              <p className={Styles.post_date}>
+                                <Moment format='YYYY.MM.DD'>{news.publishedAt}</Moment>
+                                <span className={Styles.category_name}>
+                                  {news.category && `${news.category.name}`}
+                                </span>
+                              </p>
+                            </a>
+                          </Link>
+                        </ScrollRevealContainer>
                       ) : (
-                        <Link href={`/news/${news.id}`}>
-                          <a>
-                            <h3>{news.title}</h3>
-                            <p className={Styles.post_date}>
-                              <Moment format='YYYY.MM.DD'>{news.publishedAt}</Moment>
-                              <span className={Styles.category_name}>
-                                {news.category && `${news.category.name}`}
-                              </span>
-                            </p>
-                          </a>
-                        </Link>
+                        <ScrollRevealContainer move='bottom'>
+                          <Link href={`/news/${news.id}`}>
+                            <a>
+                              <h3>{news.title}</h3>
+                              <p className={Styles.post_date}>
+                                <Moment format='YYYY.MM.DD'>{news.publishedAt}</Moment>
+                                <span className={Styles.category_name}>
+                                  {news.category && `${news.category.name}`}
+                                </span>
+                              </p>
+                            </a>
+                          </Link>
+                        </ScrollRevealContainer>
                       )}
                     </li>
                   ))}
@@ -160,35 +176,43 @@ export default function Home({
               <ul className={Styles.vision_flex}>
                 <li>
                   <div className={Styles.vision_flex_img}>
-                    <div className={`${Styles.img_circle} ${Styles.vision_img}`}>
-                      <div className={Styles.img_circle_inner}>
-                        <Image
-                          src='/vision_1.jpg'
-                          alt='ロボティクスの技術を小型船舶に'
-                          layout={'fill'}
-                          objectFit={'cover'}
-                        />
+                    <ScrollRevealContainer move='bottom' size='small'>
+                      <div className={`${Styles.img_circle} ${Styles.vision_img}`}>
+                        <div className={Styles.img_circle_inner}>
+                          <Image
+                            src='/vision_1.jpg'
+                            alt='ロボティクスの技術を小型船舶に'
+                            layout={'fill'}
+                            objectFit={'cover'}
+                          />
+                        </div>
                       </div>
-                    </div>
+                    </ScrollRevealContainer>
                   </div>
                   <div className={Styles.vision_flex_txt}>
                     <h3 className={Styles.vision_title}>
-                      <span>
-                        Robotics
+                      <ScrollRevealContainer move='right'>
+                        <span>
+                          Robotics
+                          <br />
+                          Technology
+                          <br />
+                          use for
+                          <br />
+                          Smalls Vessel
+                        </span>
+                      </ScrollRevealContainer>
+                      <ScrollRevealContainer move='right'>
+                        ロボティクスの技術を
                         <br />
-                        Technology
-                        <br />
-                        use for
-                        <br />
-                        Smalls Vessel
-                      </span>
-                      ロボティクスの技術を
-                      <br />
-                      小型船舶に
+                        小型船舶に
+                      </ScrollRevealContainer>
                     </h3>
-                    <p>
-                      ロボティクスの技術を船舶に適用させ、港と港つなぐ自律操船技術を開発し、それを利用したより快適な水上モビリティを開発します。
-                    </p>
+                    <ScrollRevealContainer move='right'>
+                      <p>
+                        ロボティクスの技術を船舶に適用させ、港と港つなぐ自律操船技術を開発し、それを利用したより快適な水上モビリティを開発します。
+                      </p>
+                    </ScrollRevealContainer>
                   </div>
                 </li>
                 <li>
