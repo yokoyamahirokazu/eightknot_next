@@ -23,13 +23,12 @@ import Moment from 'react-moment';
 import { ST } from 'next/dist/shared/lib/utils';
 import { ContactGoogleForm } from '../../constants/ContactGoogleForm';
 import axios from 'axios';
+import { useMail } from '../../hooks/useMail';
 
 export default function App() {
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm();
+
+  const { setName, setMessage, send } = useMail();
+
 
   return (
     <Content>
@@ -62,136 +61,9 @@ export default function App() {
                   <span className={Styles.error}>*必須</span>
                 </p>
               </div>
-              <form onSubmit={handleSubmit(onSubmit)}>
-                <div className={Styles.contact_form_block}>
-                  <label>
-                    メールアドレス<span className={Styles.required}>*</span>
-                  </label>
-                  <input
-                    type='text'
-                    name={'email'}
-                    placeholder='xxxxxxx@xxxxx.xxx'
-                    {...register('Email', { required: true, pattern: /^\S+@\S+$/i })}
-                  />
-                  {errors.Email?.type === 'required' && (
-                    <p className={Styles.error}>この質問は必須項目です</p>
-                  )}
-                  {errors.Email?.type === 'pattern' && (
-                    <p className={Styles.error}>メールアドレスを入力してください</p>
-                  )}
-                </div>
-                <div className={Styles.contact_form_block}>
-                  <label>
-                    氏名<span className={Styles.required}>*</span>
-                  </label>
-                  <input
-                    type='text'
-                    name={'name'}
-                    placeholder='姓 名'
-                    {...register('Fullname', { required: true, maxLength: 80 })}
-                  />
-                  {errors.Fullname?.type === 'required' && (
-                    <p className={Styles.error}>この質問は必須項目です</p>
-                  )}
-                  {errors.Fullname?.type === 'maxLength' && (
-                    <p className={Styles.error}>80文字以内で記入してください</p>
-                  )}
-                </div>
-                <div className={Styles.contact_form_block}>
-                  <label>
-                    会社・団体名 <span>ご所属組織のない場合、「個人」とご記入ください。</span>
-                  </label>
-
-                  <input
-                    type='text'
-                    name={'company'}
-                    placeholder='例）株式会社エイトノット'
-                    {...register('Company', {})}
-                  />
-                </div>
-                <div className={Styles.contact_form_block}>
-                  <label>電話番号</label>
-                  <input
-                    type='tel'
-                    name={'tel'}
-                    placeholder='000-0000-0000'
-                    {...register('Mobilenumber', { maxLength: 14 })}
-                  />
-                  {errors.Mobilenumber?.type === 'maxLength' && (
-                    <p className={Styles.error}>12文字以内で記入してください</p>
-                  )}
-                </div>
-                <div className={Styles.contact_form_block}>
-                  <label>
-                    お問い合わせ内容<span className={Styles.required}>*</span>
-                  </label>
-                  <label className={Styles.radio} htmlFor='typeA'>
-                    <input
-                      {...register('Type', { required: true })}
-                      type='radio'
-                      name={'type'}
-                      value='見積依頼'
-                      id='typeA'
-                    />
-                    見積依頼
-                  </label>
-                  <label className={Styles.radio} htmlFor='typeB'>
-                    <input
-                      {...register('Type', { required: true })}
-                      type='radio'
-                      name={'type'}
-                      value='取材依頼'
-                      id='typeB'
-                    />
-                    取材依頼
-                  </label>
-                  <label className={Styles.radio} htmlFor='typeC'>
-                    <input
-                      {...register('Type', { required: true })}
-                      type='radio'
-                      name={'type'}
-                      value='求人へのご応募'
-                      id='typeC'
-                    />
-                    求人へのご応募
-                  </label>
-                  <div className={Styles.typeother}>
-                    <label className={Styles.radio} htmlFor='typeD'>
-                      <input
-                        {...register('Type', { required: true })}
-                        type='radio'
-                        name={'type'}
-                        value='その他'
-                        id='typeD'
-                      />
-                      その他
-                    </label>
-                    <input
-                      type='text'
-                      name={'typeother'}
-                      placeholder=''
-                      {...register('other', { maxLength: 80 })}
-                    />
-                  </div>
-
-                  {errors.Type?.type === 'required' && (
-                    <p className={Styles.error}>この質問は必須項目です</p>
-                  )}
-                </div>
-                <div className={Styles.contact_form_block}>
-                  <label>
-                    お問い合わせ詳細<span className={Styles.required}>*</span>
-                  </label>
-
-                  <textarea name={'body'} {...register('Contents', { required: true })} />
-                  {errors.Contents?.type === 'required' && (
-                    <p className={Styles.error}>この質問は必須項目です</p>
-                  )}
-                </div>
-                <button className={`${Styles.btn} ${Styles.submit}`} type={'submit'}>
-                  送信する
-                </button>{' '}
-              </form>
+              <input type="text" onChange={(e) => setName(e.target.value)} />
+      <textarea onChange={(e) => setMessage(e.target.value)} />
+      <button type="button" onClick={send}>Send</button>
             </div>
           </div>
         </div>
