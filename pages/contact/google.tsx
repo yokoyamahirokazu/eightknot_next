@@ -218,12 +218,7 @@ const submit = (values) => {
   submitParams.append(ContactGoogleForm.body, values.body);
 
   // 実行
-  axios
-    .post(GOOGLE_FORM_ACTION, submitParams)
-    .then(() => {
-      window.location.href = 'contact/thanks'; // 成功時
-    })
-    .catch((error) => {
-      console.log(error); // 失敗時
-    });
+  axios.post(GOOGLE_FORM_ACTION, submitParams);
+
+  window.location.href = 'contact/thanks'; // 成功時
 };
