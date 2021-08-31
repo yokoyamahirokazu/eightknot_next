@@ -465,12 +465,16 @@ ul.vision_flex li:nth-child(even) .vision_flex_img {
 }
 
 .vision_title {
-  font-size: 2.2rem;
   font-weight: normal;
   margin: 0 0 2vw;
 }
 
 .vision_title span {
+  display: block;
+  font-size: 2.2rem;
+}
+
+.vision_title span.en {
   font-family: var(--font-obvia);
   font-size: 5.2rem;
   color: var(--primary-050);
@@ -508,10 +512,11 @@ ul.vision_flex li:nth-child(even) .vision_flex_img {
 
 @media screen and (max-width: 1300px) {
   .vision_title span {
-    font-size: 6vw;
-  }
-  .vision_title {
     font-size: 3vw;
+  }
+
+  .vision_title span.en {
+    font-size: 6vw;
   }
 
   ul.vision_flex li {
@@ -590,9 +595,6 @@ ul.team_list {
 ul.team_list li {
   width: calc(33.3333% - 1vw);
   margin: 0 0 3vw 1vw;
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
   padding: 10px;
   box-sizing: border-box;
   border-radius: 4px;
@@ -601,6 +603,11 @@ ul.team_list li {
   -moz-transition: all 0.2s ease;
   -o-transition: all 0.2s ease;
   transition: all 0.2s ease;
+}
+ul.team_list li section {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
 }
 
 /* ul.team_list li:hover {
@@ -888,7 +895,7 @@ ul.partners li a img {
 .contact_form label span {
   font-size: 0.8rem;
   display: inline-block;
-  margin: 0 0 0 10px;
+  margin: 0 0 0 0;
 }
 
 .contact_form label span.required {
@@ -950,6 +957,15 @@ ul.partners li a img {
   margin: 4vw 0 0 0;
 }
 
+@media screen and (max-width: 767px) {
+  .contact_form {
+    padding: 6vw;
+  }
+  .contact_form form {
+    margin: 8vw 0 0 0;
+  }
+}
+
 /* news post  */
 
 .news_post {
@@ -963,10 +979,14 @@ ul.partners li a img {
 
 .news_post .publishedAt {
   margin: 10px 0 0;
+  font-size: 0.8rem;
 }
-
+.news_post .publishedAt span {
+  display: inline-block;
+  margin: 0 0 0 1rem;
+}
 .news_post_content {
-  margin: 4vw 0;
+  margin: 6vw 0;
 }
 
 .news_post_content h2 {
@@ -1036,4 +1056,32 @@ ul.partners li a img {
   background: #0e101c;
   max-width: 400px;
   margin: 0 auto;
+}
+
+/* breadcrumbs */
+ul.breadcrumbs {
+  padding: 10px 3.4vw;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+ul.breadcrumbs li {
+  margin: 0;
+  font-size: 0.8rem;
+  color: var(--primary-300);
+}
+
+ul.breadcrumbs li a {
+  font-size: 0.8rem;
+  display: flex;
+  align-items: center;
+  color: var(--primary-500);
+}
+
+ul.breadcrumbs li a svg {
+  width: 0.8rem;
+  height: 0.8rem;
+  color: var(--primary-300);
 }

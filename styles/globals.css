@@ -62,7 +62,7 @@ body {
 }
 
 a {
-  color: inherit;
+  color: var(--secondary-500);
   text-decoration: none;
 }
 

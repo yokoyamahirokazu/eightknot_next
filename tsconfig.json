@@ -14,6 +14,14 @@
     "isolatedModules": true,
     "jsx": "preserve"
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "svgr.config.js"],
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    "svgr.config.js",
+    "pages/components/breadcrumbs.js",
+    "pages/components/breadcrumbs.js",
+    "pages/components/breadcrumbs.js"
+  ],
   "exclude": ["node_modules"]
 }

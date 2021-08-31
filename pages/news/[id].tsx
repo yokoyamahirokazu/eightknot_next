@@ -2,21 +2,16 @@ import Link from 'next/link';
 import Content from '../components/lower';
 import { client } from '../../libs/client';
 import Styles from '../../styles/components.module.css';
-import HomeIcon from '../../public/icon/home.svg';
 import NewsIcon from '../../public/icon/news.svg';
-import BlogIcon from '../../public/icon/blog.svg';
-import AboutIcon from '../../public/icon/about.svg';
-import ContactIcon from '../../public/icon/contact.svg';
 import FacebookIcon from '../../public/icon/facebook.svg';
 import TwitterIcon from '../../public/icon/twitter.svg';
 import BlankIcon from '../../public/icon/blank.svg';
-import TeamIcon from '../../public/icon/team.svg';
-import VisionIcon from '../../public/icon/vision.svg';
 import ShareIcon from '../../public/icon/share.svg';
-import BgLogo from '../../public/icon/EightKnot_mark_bg.svg';
-import Logo from '../../public/icon/EightKnot_logo_horizontal.svg';
-import Eyecatch from '../../public/icon/EightKnotEyecacthBg.svg';
 import Moment from 'react-moment';
+import Breadcrumb from '../components/breadcrumbs';
+import CommonMeta from '../components/CommonMeta';
+import dynamic from 'next/dynamic';
+const ScrollRevealContainer = dynamic(import('../../ScrollRevealContainer'), { ssr: false });
 
 interface Article {
   id: string;
@@ -49,20 +44,30 @@ export default function NewsIndex({
 }): JSX.Element {
   return (
     <Content>
+      <CommonMeta title={news.title} description={news.title + 'のページです。'} />
+
+      <Breadcrumb newsTitle={news.title} />
+
       <section>
         <div className={Styles.section_inner}>
           <div className={Styles.content_flex}>
             <div className={Styles.news_flex_left}>
               <div className={Styles.headline_box}>
                 <h2 className={Styles.headline}>
-                  <NewsIcon />
-                  <span className={Styles.headline_txt}>News</span>
+                  <ScrollRevealContainer move='right'>
+                    <NewsIcon />
+                  </ScrollRevealContainer>
+                  <ScrollRevealContainer move='right'>
+                    <span className={Styles.headline_txt}>News</span>
+                  </ScrollRevealContainer>
                 </h2>
-                <p className={Styles.sub_headline}>
-                  Notice from
-                  <br />
-                  the Our Company
-                </p>
+                <ScrollRevealContainer move='right'>
+                  <p className={Styles.sub_headline}>
+                    Notice from
+                    <br />
+                    the Our Company
+                  </p>
+                </ScrollRevealContainer>
               </div>
             </div>
             <div className={Styles.news_flex_right}>
@@ -99,32 +104,36 @@ export default function NewsIndex({
                   {newsItem.map((newsList) => (
                     <li key={newsList.id}>
                       {newsList.blankLink ? (
-                        <Link href={newsList.blankLink}>
-                          <a target='_blank'>
-                            <h3>
-                              <BlankIcon />
-                              {newsList.title}
-                            </h3>
-                            <p className={Styles.post_date}>
-                              <Moment format='YYYY.MM.DD'>{newsList.publishedAt}</Moment>
-                              <span className={Styles.category_name}>
-                                {newsList.category && `${newsList.category.name}`}
-                              </span>
-                            </p>
-                          </a>
-                        </Link>
+                        <ScrollRevealContainer move='bottom'>
+                          <Link href={newsList.blankLink}>
+                            <a target='_blank'>
+                              <h3>
+                                <BlankIcon />
+                                {newsList.title}
+                              </h3>
+                              <p className={Styles.post_date}>
+                                <Moment format='YYYY.MM.DD'>{newsList.publishedAt}</Moment>
+                                <span className={Styles.category_name}>
+                                  {newsList.category && `${newsList.category.name}`}
+                                </span>
+                              </p>
+                            </a>
+                          </Link>
+                        </ScrollRevealContainer>
                       ) : (
-                        <Link href={`/news/${news.id}`}>
-                          <a>
-                            <h3>{news.title}</h3>
-                            <p className={Styles.post_date}>
-                              <Moment format='YYYY.MM.DD'>{news.publishedAt}</Moment>
-                              <span className={Styles.category_name}>
-                                {news.category && `${news.category.name}`}
-                              </span>
-                            </p>
-                          </a>
-                        </Link>
+                        <ScrollRevealContainer move='bottom'>
+                          <Link href={`/news/${newsList.id}`}>
+                            <a>
+                              <h3>{newsList.title}</h3>
+                              <p className={Styles.post_date}>
+                                <Moment format='YYYY.MM.DD'>{newsList.publishedAt}</Moment>
+                                <span className={Styles.category_name}>
+                                  {newsList.category && `${newsList.category.name}`}
+                                </span>
+                              </p>
+                            </a>
+                          </Link>
+                        </ScrollRevealContainer>
                       )}
                     </li>
                   ))}
