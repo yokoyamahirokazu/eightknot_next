@@ -204,6 +204,7 @@ const submit = (values) => {
 
   const GOOGLE_FORM_ACTION = ContactGoogleForm.action;
   // CORS対策は必須
+  const CORS_PROXY = '43.249.229.184';
 
   // PostのParm生成
   const submitParams = new FormData();
@@ -218,7 +219,7 @@ const submit = (values) => {
 
   // 実行
   axios
-    .post(GOOGLE_FORM_ACTION, submitParams)
+    .post(CORS_PROXY + GOOGLE_FORM_ACTION, submitParams)
     .then(() => {
       window.location.href = 'contact/thanks'; // 成功時
     })
