@@ -211,7 +211,6 @@ const submit = (values) => {
   submitParams.append(ContactGoogleForm.email, values.email);
   submitParams.append(ContactGoogleForm.name, values.name);
   submitParams.append(ContactGoogleForm.company, values.company);
-  submitParams.append(ContactGoogleForm.company, values.company);
   submitParams.append(ContactGoogleForm.tel, values.tel);
   submitParams.append(ContactGoogleForm.bodytype, values.bodytype);
   submitParams.append(ContactGoogleForm.typeother, values.typeother);
