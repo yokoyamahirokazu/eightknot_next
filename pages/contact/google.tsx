@@ -217,9 +217,6 @@ const submit = (values) => {
   submitParams.append(ContactGoogleForm.typeother, values.typeother);
   submitParams.append(ContactGoogleForm.body, values.body);
 
-  axios.defaults.headers.post['Content-Type'] = 'application/json;charset=utf-8';
-  axios.defaults.headers.post['Access-Control-Allow-Origin'] = '*';
-
   // 実行
   axios
     .post(GOOGLE_FORM_ACTION, submitParams)
