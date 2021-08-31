@@ -5,7 +5,7 @@ export const ContactGoogleForm = {
   name: 'entry.1810091945',
   company: 'entry.822229734',
   tel: 'entry.205643487',
-  type: 'entry.1548259728',
+  bodytype: 'entry.1548259728',
   typeother: 'entry.159321597',
   body: 'entry.287122714',
 };

@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import React, { useState } from 'react';
+import React from 'react';
 import { useForm, Controller } from 'react-hook-form';
 import Router from 'next/router';
 
@@ -25,58 +25,13 @@ import { ST } from 'next/dist/shared/lib/utils';
 import { ContactGoogleForm } from '../../constants/ContactGoogleForm';
 import axios from 'axios';
 
-export default function App() {
-  const SendContent = {
-    name: '',
-    email: '',
-    subject: 'お問い合わせ',
-    honeypot: '',
-    message: '',
-    replyTo: '@',
-    accessKey: '7d219451-de43-4589-a9ba-36d9ac4385bd',
-  };
-
-  const [response, setResponse] = useState({
-    type: '',
-    message: '',
-  });
-
+export default function Google() {
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm();
-
-  const onSubmit = handleSubmit(async (data) => {
-    const result = { ...SendContent, ...data };
-
-    console.log(result);
-
-    try {
-      const res = await fetch('https://api.staticforms.xyz/submit', {
-        method: 'POST',
-        body: JSON.stringify(SendContent),
-        headers: { 'Content-Type': 'application/json' },
-      });
-
-      const json = await res.json();
-
-      if (json.success) {
-        //成功したらsuccessページに飛ぶ
-        Router.push('/contact/thanks');
-      } else {
-        setResponse({
-          type: 'error',
-          message: json.message,
-        });
-      }
-    } catch (e) {
-      console.log('An error occurred', e);
-      setResponse({
-        type: 'error',
-        message: 'An error occured while submitting the form',
-      });
-    }
+  } = useForm({
+    mode: 'onChange',
   });
 
   return (
@@ -110,18 +65,14 @@ export default function App() {
                   <span className={Styles.error}>*必須</span>
                 </p>
               </div>
-              <form
-                action='https://api.staticforms.xyz/submit'
-                method='post'
-                onSubmit={handleSubmit(onSubmit)}
-              >
+              <form onSubmit={handleSubmit(submit)}>
                 <div className={Styles.contact_form_block}>
                   <label>
                     メールアドレス<span className={Styles.required}>*</span>
                   </label>
                   <input
                     type='text'
-                    name='email'
+                    name={'email'}
                     placeholder='xxxxxxx@xxxxx.xxx'
                     {...register('email', { required: true, pattern: /^\S+@\S+$/i })}
                   />
@@ -138,7 +89,7 @@ export default function App() {
                   </label>
                   <input
                     type='text'
-                    name='name'
+                    name={'name'}
                     placeholder='姓 名'
                     {...register('name', { required: true, maxLength: 80 })}
                   />
@@ -156,9 +107,9 @@ export default function App() {
 
                   <input
                     type='text'
-                    name='company'
+                    name={'company'}
                     placeholder='例）株式会社エイトノット'
-                    {...register('Company', {})}
+                    {...register('company', {})}
                   />
                 </div>
                 <div className={Styles.contact_form_block}>
@@ -167,10 +118,10 @@ export default function App() {
                     type='tel'
                     name={'tel'}
                     placeholder='000-0000-0000'
-                    {...register('Mobilenumber', { maxLength: 14 })}
+                    {...register('tel', { maxLength: 14 })}
                   />
-                  {errors.Mobilenumber?.type === 'maxLength' && (
-                    <p className={Styles.error}>12文字以内で記入してください</p>
+                  {errors.tel?.type === 'maxLength' && (
+                    <p className={Styles.error}>電話番号を記入してください</p>
                   )}
                 </div>
                 <div className={Styles.contact_form_block}>
@@ -218,7 +169,7 @@ export default function App() {
                       type='text'
                       name={'typeother'}
                       placeholder=''
-                      {...register('other', { maxLength: 80 })}
+                      {...register('typeother', { maxLength: 80 })}
                     />
                   </div>
                   {errors.bodytype?.type === 'required' && (
@@ -230,8 +181,8 @@ export default function App() {
                     お問い合わせ詳細<span className={Styles.required}>*</span>
                   </label>
 
-                  <textarea name='body' {...register('Body', { required: true })} />
-                  {errors.Body?.type === 'required' && (
+                  <textarea name={'body'} {...register('body', { required: true })} />
+                  {errors.body?.type === 'required' && (
                     <p className={Styles.error}>この質問は必須項目です</p>
                   )}
                 </div>
@@ -248,3 +199,26 @@ export default function App() {
     </Content>
   );
 }
+const submit = (values) => {
+  console.log(values);
+
+  const GOOGLE_FORM_ACTION = ContactGoogleForm.action;
+  // CORS対策は必須
+  const CORS_PROXY = 'https://eightknot-next.vercel.app/';
+
+  // PostのParm生成
+  const submitParams = new FormData();
+  submitParams.append(ContactGoogleForm.name, values.name);
+  submitParams.append(ContactGoogleForm.gender, values.gender);
+  submitParams.append(ContactGoogleForm.inquiry, values.inquiry);
+
+  // 実行
+  axios
+    .post(CORS_PROXY + GOOGLE_FORM_ACTION, submitParams)
+    .then(() => {
+      window.location.href = 'contact/thanks'; // 成功時
+    })
+    .catch((error) => {
+      console.log(error); // 失敗時
+    });
+};
