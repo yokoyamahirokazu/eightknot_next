@@ -1,3 +1,4 @@
+import Head from 'next/head';
 import Link from 'next/link';
 import Image from 'next/image';
 import React from 'react';
@@ -27,6 +28,11 @@ import axios from 'axios';
 export default function thanks() {
   return (
     <Content>
+      <Head>
+        <title>My page title</title>
+        <meta name='viewport' content='initial-scale=1.0, width=device-width' />
+      </Head>
+
       <section>
         <div className={`${Styles.section_inner} ${Styles.news_flex}`}>
           <div className={Styles.news_flex_left}>
@@ -43,9 +49,18 @@ export default function thanks() {
             </div>
           </div>
           <div className={Styles.news_flex_right}>
-            <h2 className={Styles.headline_2}>Thanks</h2>
+            <h2 className={Styles.headline_2}>Thank You Very Much for Inquiring</h2>
             <div className={Styles.content_box}>
-              <p>ありがとう</p>
+              <p>
+                この度は、お問い合わせありがとうございます。
+                <br />
+                お問い合わせ内容を確認の上、担当者より改めてご連絡いたしますので今しばらくお待ちください。
+              </p>
+              <div className={Styles.content_box}>
+                <Link href='/'>
+                  <a className={Styles.btn}>Back to Home</a>
+                </Link>
+              </div>
             </div>
           </div>
         </div>

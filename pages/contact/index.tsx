@@ -1,7 +1,10 @@
+import Head from 'next/head';
 import Link from 'next/link';
 import Image from 'next/image';
 import React from 'react';
 import { useForm, Controller } from 'react-hook-form';
+import BreadCrumbs from '../components/breadcrumbs';
+
 import Router from 'next/router';
 
 import Content from '../components/lower';
@@ -36,6 +39,21 @@ export default function Google() {
 
   return (
     <Content>
+      <BreadCrumbs
+        lists={[
+          {
+            string: 'Home',
+            path: '/',
+          },
+          {
+            string: 'お問い合わせ',
+          },
+        ]}
+      />
+      <Head>
+        <title>お問い合わせ</title>
+      </Head>
+
       <section>
         <div className={`${Styles.section_inner} ${Styles.news_flex}`}>
           <div className={Styles.news_flex_left}>
