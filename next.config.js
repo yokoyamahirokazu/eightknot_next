@@ -13,4 +13,7 @@ module.exports = {
     });
     return config;
   },
+  env: {
+    access_key: process.env.ACCESS_KEY,
+  },
 };

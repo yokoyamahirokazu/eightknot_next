@@ -82,13 +82,14 @@ export default function Home({
         <link rel='icon' href='/favicon.ico' />
       </Head>
       <div className={Styles.eyecatch}>
-        {/* <Image
+        <Image
           alt='アイキャッチ'
           src='/EightKnotEyecacthBg.svg'
-          layout={'responsive'}
-          width={'1440'}
-          height={'820'}
-        /> */}
+          layout={'fill'}
+          objectFit={'cover'}
+          objectPosition={'50% 100%'}
+            quality={50}
+        />
         <p className={Styles.catchcopy}>
           あらゆる水上モビリティを
           <br />
