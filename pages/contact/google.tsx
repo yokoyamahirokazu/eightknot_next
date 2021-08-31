@@ -208,9 +208,14 @@ const submit = (values) => {
 
   // PostのParm生成
   const submitParams = new FormData();
+  submitParams.append(ContactGoogleForm.email, values.email);
   submitParams.append(ContactGoogleForm.name, values.name);
-  submitParams.append(ContactGoogleForm.gender, values.gender);
-  submitParams.append(ContactGoogleForm.inquiry, values.inquiry);
+  submitParams.append(ContactGoogleForm.company, values.company);
+  submitParams.append(ContactGoogleForm.company, values.company);
+  submitParams.append(ContactGoogleForm.tel, values.tel);
+  submitParams.append(ContactGoogleForm.bodytype, values.bodytype);
+  submitParams.append(ContactGoogleForm.typeother, values.typeother);
+  submitParams.append(ContactGoogleForm.body, values.body);
 
   // 実行
   axios
