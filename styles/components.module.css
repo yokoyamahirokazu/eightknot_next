@@ -399,6 +399,11 @@ ul.news_list li a .category_name {
   justify-content: flex-end;
   margin: 0 0 0;
 }
+.view_more_box.center {
+  display: flex;
+  justify-content: center;
+  margin: 0 0 0;
+}
 
 @media screen and (max-width: 767px) {
   .news_flex {
@@ -551,14 +556,16 @@ ul.vision_flex li:nth-child(even) .vision_flex_img {
   }
 
   .vision_title {
-    font-size: 1.8rem;
     font-weight: normal;
     margin: 0 0 4vw;
   }
 
   .vision_title span {
+    font-size: 1.8rem;
+  }
+
+  .vision_title span.en {
     font-size: 14vw;
-    margin: 0 0 8vw;
   }
 
   .vision_img {

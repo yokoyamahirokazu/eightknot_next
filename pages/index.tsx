@@ -10,7 +10,6 @@ import BlogIcon from '../public/icon/blog.svg';
 import BlankIcon from '../public/icon/blank.svg';
 import TeamIcon from '../public/icon/team.svg';
 import VisionIcon from '../public/icon/vision.svg';
-import BgMark from '../public/icon/EightKnot_mark_bg.svg';
 import Moment from 'react-moment';
 const ScrollRevealContainer = dynamic(import('../ScrollRevealContainer'), { ssr: false });
 import CommonMeta from './components/CommonMeta';
@@ -397,7 +396,7 @@ export default function Home({
                 </ScrollRevealContainer>
               </div>
               <ul className={Styles.blog}>
-                {noteItem.map((note) => (
+                {noteItem.slice(0, 10).map((note) => (
                   <li key={note.title}>
                     <ScrollRevealContainer>
                       <Link href={note.link}>
@@ -416,6 +415,15 @@ export default function Home({
                   </li>
                 ))}
               </ul>
+              <div className={`${Styles.view_more_box} ${Styles.center}`}>
+                <ScrollRevealContainer move='bottom'>
+                  <Link href='https://note.com/8kt/'>
+                    <a target='_blank' className={Styles.btn}>
+                      View More
+                    </a>
+                  </Link>
+                </ScrollRevealContainer>
+              </div>
             </div>
           </section>
         </main>
