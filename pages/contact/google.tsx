@@ -204,7 +204,7 @@ const submit = (values) => {
 
   const GOOGLE_FORM_ACTION = ContactGoogleForm.action;
   // CORS対策は必須
-  const CORS_PROXY = '43.249.229.184';
+  const CORS_PROXY = 'https://eightknot-next.vercel.app/contact/google';
 
   // PostのParm生成
   const submitParams = new FormData();
