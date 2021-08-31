@@ -219,7 +219,7 @@ const submit = (values) => {
 
   // 実行
   axios
-    .post(CORS_PROXY + GOOGLE_FORM_ACTION, submitParams)
+    .post(GOOGLE_FORM_ACTION, submitParams)
     .then(() => {
       window.location.href = 'contact/thanks'; // 成功時
     })
