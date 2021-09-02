@@ -140,9 +140,9 @@
 }
 
 .headline svg {
-  width: 2.85rem;
-  height: 2.85rem;
-  fill: var(--primary-300);
+  width: 2.6rem;
+  height: 2.6rem;
+  color: var(--primary-300);
   margin: 0 0.75rem 0 0;
 }
 

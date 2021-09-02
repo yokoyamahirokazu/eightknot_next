@@ -12,6 +12,7 @@ import Breadcrumb from '../components/breadcrumbs';
 import CommonMeta from '../components/CommonMeta';
 import dynamic from 'next/dynamic';
 const ScrollRevealContainer = dynamic(import('../../ScrollRevealContainer'), { ssr: false });
+import { BiMessageDetail } from 'react-icons/bi';
 
 interface Article {
   id: string;
@@ -53,14 +54,12 @@ export default function NewsIndex({
           <div className={Styles.content_flex}>
             <div className={Styles.news_flex_left}>
               <div className={Styles.headline_box}>
-                <h2 className={Styles.headline}>
-                  <ScrollRevealContainer move='right'>
-                    <NewsIcon />
-                  </ScrollRevealContainer>
-                  <ScrollRevealContainer move='right'>
+                <ScrollRevealContainer move='right'>
+                  <h2 className={Styles.headline}>
+                    <BiMessageDetail />
                     <span className={Styles.headline_txt}>News</span>
-                  </ScrollRevealContainer>
-                </h2>
+                  </h2>
+                </ScrollRevealContainer>
                 <ScrollRevealContainer move='right'>
                   <p className={Styles.sub_headline}>
                     Notice from

@@ -9,6 +9,8 @@ import Head from 'next/head';
 import CommonMeta from '../components/CommonMeta';
 import dynamic from 'next/dynamic';
 const ScrollRevealContainer = dynamic(import('../../ScrollRevealContainer'), { ssr: false });
+import { FiHome, FiInfo, FiMail, FiEye, FiCpu } from 'react-icons/fi';
+
 interface Article {
   id: string;
   title: string;
@@ -53,14 +55,13 @@ export default function About({
           <div className={`${Styles.section_inner} ${Styles.news_flex}`}>
             <div className={Styles.news_flex_left}>
               <div className={Styles.headline_box}>
-                <h2 className={Styles.headline}>
-                  <ScrollRevealContainer move='right'>
-                    <AboutIcon />
-                  </ScrollRevealContainer>
-                  <ScrollRevealContainer move='right'>
+                <ScrollRevealContainer move='right'>
+                  <h2 className={Styles.headline}>
+                    <FiInfo />
+
                     <span className={Styles.headline_txt}>About</span>
-                  </ScrollRevealContainer>
-                </h2>
+                  </h2>
+                </ScrollRevealContainer>
                 <ScrollRevealContainer move='right'>
                   <p className={Styles.sub_headline}>About Our Company</p>
                 </ScrollRevealContainer>

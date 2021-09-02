@@ -10,9 +10,18 @@ import BlogIcon from '../public/icon/blog.svg';
 import BlankIcon from '../public/icon/blank.svg';
 import TeamIcon from '../public/icon/team.svg';
 import VisionIcon from '../public/icon/vision.svg';
+import RecruitIcon from '../public/icon/file.svg';
+import TechIcon from '../public/icon/tech.svg';
 import Moment from 'react-moment';
 const ScrollRevealContainer = dynamic(import('../ScrollRevealContainer'), { ssr: false });
 import CommonMeta from './components/CommonMeta';
+
+import { FiHome, FiInfo, FiMail, FiEye, FiCpu } from 'react-icons/fi';
+import { BiMessageDetail } from 'react-icons/bi';
+import { HiOutlinePencil } from 'react-icons/hi';
+import { BiUserPin } from 'react-icons/bi';
+import { FaFacebook, FaTwitter } from 'react-icons/fa';
+import { AiOutlineTeam } from 'react-icons/ai';
 
 interface Article {
   id: string;
@@ -43,6 +52,7 @@ export default function Home({
   newsItem,
   staffItem,
   visionItem,
+  techItem,
   noteItem,
 }: {
   newsItem: {
@@ -70,6 +80,11 @@ export default function Home({
     img: {
       url: string;
     };
+  }[];
+  techItem: {
+    id: string;
+    title: string;
+    body: string;
   }[];
   noteItem: {
     thumb: string;
@@ -114,7 +129,7 @@ export default function Home({
                 <div className={Styles.headline_box}>
                   <ScrollRevealContainer move='right'>
                     <h2 className={`${Styles.headline} ${Styles.white}`}>
-                      <NewsIcon />
+                      <BiMessageDetail />
                       <span className={Styles.headline_txt}>News</span>
                     </h2>
                   </ScrollRevealContainer>
@@ -181,7 +196,7 @@ export default function Home({
             <div className={Styles.section_inner}>
               <div className={Styles.headline_box}>
                 <h2 className={Styles.headline}>
-                  <VisionIcon />
+                  <FiEye />
                   <span className={Styles.headline_txt}>Vision</span>
                 </h2>
                 <p className={Styles.sub_headline}>Introduce Our Vision</p>
@@ -226,11 +241,23 @@ export default function Home({
             <div className={Styles.section_inner}>
               <div className={Styles.headline_box}>
                 <h2 className={Styles.headline}>
-                  <VisionIcon />
+                  <FiCpu />
                   <span className={Styles.headline_txt}>Technology</span>
                 </h2>
                 <p className={Styles.sub_headline}>Introduce Our Technology</p>
               </div>
+
+              {techItem.map((tech) => (
+                <div key={tech.id}>
+                  {tech.title}
+
+                  <div
+                    dangerouslySetInnerHTML={{
+                      __html: `${tech.body}`,
+                    }}
+                  />
+                </div>
+              ))}
             </div>
           </section>
 
@@ -247,7 +274,7 @@ export default function Home({
               <div className={Styles.headline_box}>
                 <h2 className={`${Styles.headline} ${Styles.white}`}>
                   <ScrollRevealContainer move='right'>
-                    <TeamIcon />
+                    <AiOutlineTeam />
                   </ScrollRevealContainer>
                   <ScrollRevealContainer move='right'>
                     <span className={Styles.headline_txt}>Team</span>
@@ -293,7 +320,7 @@ export default function Home({
               <div className={Styles.headline_box}>
                 <h2 className={Styles.headline}>
                   <ScrollRevealContainer move='right'>
-                    <BlogIcon />
+                    <HiOutlinePencil />
                   </ScrollRevealContainer>
                   <ScrollRevealContainer move='right'>
                     <span className={Styles.headline_txt}>Blog</span>
@@ -348,6 +375,7 @@ export const getStaticProps = async () => {
   const newsData: Contents = await client.get({ endpoint: 'news', queries: { limit: 4 } });
   const staffData: Contents = await client.get({ endpoint: 'staff' });
   const visionData: Contents = await client.get({ endpoint: 'vision' });
+  const techData: Contents = await client.get({ endpoint: 'technology' });
 
   const parser = new Parser({
     customFields: {
@@ -362,6 +390,7 @@ export const getStaticProps = async () => {
       newsItem: newsData.contents,
       staffItem: staffData.contents,
       visionItem: visionData.contents,
+      techItem: techData.contents,
     },
   };
 };

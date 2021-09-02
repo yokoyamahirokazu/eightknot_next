@@ -11,6 +11,13 @@ import CommonMeta from '../components/CommonMeta';
 import dynamic from 'next/dynamic';
 const ScrollRevealContainer = dynamic(import('../../ScrollRevealContainer'), { ssr: false });
 
+import { FiHome, FiInfo, FiMail, FiEye, FiCpu } from 'react-icons/fi';
+import { BiMessageDetail } from 'react-icons/bi';
+import { HiOutlinePencil } from 'react-icons/hi';
+import { BiUserPin } from 'react-icons/bi';
+import { FaFacebook, FaTwitter } from 'react-icons/fa';
+import { AiOutlineTeam } from 'react-icons/ai';
+
 interface Article {
   id: string;
   title: string;
@@ -49,14 +56,12 @@ export default function NewsIndex({
           <div className={`${Styles.section_inner} ${Styles.news_flex}`}>
             <div className={Styles.news_flex_left}>
               <div className={Styles.headline_box}>
-                <h2 className={Styles.headline}>
-                  <ScrollRevealContainer move='right'>
-                    <NewsIcon />
-                  </ScrollRevealContainer>
-                  <ScrollRevealContainer move='right'>
+                <ScrollRevealContainer move='right'>
+                  <h2 className={Styles.headline}>
+                    <BiMessageDetail />
                     <span className={Styles.headline_txt}>News</span>
-                  </ScrollRevealContainer>
-                </h2>
+                  </h2>
+                </ScrollRevealContainer>
                 <ScrollRevealContainer move='right'>
                   <p className={Styles.sub_headline}>
                     Notice from
