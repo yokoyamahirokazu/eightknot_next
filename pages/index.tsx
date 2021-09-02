@@ -21,6 +21,8 @@ interface Article {
     name: string;
   };
   publishedAt: string;
+  body: string;
+  titleEnglish: string;
   blankLink: string;
   thumb: string;
   pubDate: string;
@@ -40,6 +42,7 @@ interface Contents {
 export default function Home({
   newsItem,
   staffItem,
+  visionItem,
   noteItem,
 }: {
   newsItem: {
@@ -56,6 +59,15 @@ export default function Home({
     name: string;
     post: string;
     image: {
+      url: string;
+    };
+  }[];
+  visionItem: {
+    id: string;
+    title: string;
+    titleEnglish: string;
+    body: string;
+    img: {
       url: string;
     };
   }[];
@@ -175,157 +187,53 @@ export default function Home({
                 <p className={Styles.sub_headline}>Introduce Our Vision</p>
               </div>
               <ul className={Styles.vision_flex}>
-                <li>
-                  <div className={Styles.vision_flex_img}>
-                    <ScrollRevealContainer move='bottom' size='small'>
-                      <div className={`${Styles.img_circle} ${Styles.vision_img}`}>
-                        <div className={Styles.img_circle_inner}>
-                          <Image
-                            src='/vision_1.jpg'
-                            alt='ロボティクスの技術を小型船舶に'
-                            layout={'fill'}
-                            objectFit={'cover'}
-                          />
+                {visionItem.map((vision) => (
+                  <li key={vision.id}>
+                    <div className={Styles.vision_flex_img}>
+                      <ScrollRevealContainer move='bottom' size='small'>
+                        <div className={`${Styles.img_circle} ${Styles.vision_img}`}>
+                          <div className={Styles.img_circle_inner}>
+                            <Image
+                              src={vision.img.url}
+                              alt={vision.title}
+                              layout={'fill'}
+                              objectFit={'cover'}
+                            />
+                          </div>
                         </div>
-                      </div>
-                    </ScrollRevealContainer>
-                  </div>
-                  <div className={Styles.vision_flex_txt}>
-                    <h3 className={Styles.vision_title}>
-                      <ScrollRevealContainer move='right'>
-                        <span className={Styles.en}>
-                          Robotics
-                          <br />
-                          Technology
-                          <br />
-                          use for
-                          <br />
-                          Smalls Vessel
-                        </span>
                       </ScrollRevealContainer>
+                    </div>
+                    <div className={Styles.vision_flex_txt}>
+                      <h3 className={Styles.vision_title}>
+                        <ScrollRevealContainer move='right'>
+                          <span className={Styles.en}>{vision.titleEnglish}</span>
+                        </ScrollRevealContainer>
+                        <ScrollRevealContainer move='right'>
+                          <span>{vision.title}</span>
+                        </ScrollRevealContainer>
+                      </h3>
                       <ScrollRevealContainer move='right'>
-                        <span>
-                          ロボティクスの技術を
-                          <br />
-                          小型船舶に
-                        </span>
+                        <p>{vision.body}</p>
                       </ScrollRevealContainer>
-                    </h3>
-                    <ScrollRevealContainer move='right'>
-                      <p>
-                        ロボティクスの技術を船舶に適用させ、港と港つなぐ自律操船技術を開発し、それを利用したより快適な水上モビリティを開発します。
-                      </p>
-                    </ScrollRevealContainer>
-                  </div>
-                </li>
-                <li>
-                  <div className={Styles.vision_flex_img}>
-                    <ScrollRevealContainer move='bottom' size='small'>
-                      <div className={`${Styles.img_circle} ${Styles.vision_img}`}>
-                        <div className={Styles.img_circle_inner}>
-                          <Image
-                            src='/vision_2.jpg'
-                            alt='エミッションフリー'
-                            layout={'fill'}
-                            objectFit={'cover'}
-                          />
-                        </div>
-                      </div>
-                    </ScrollRevealContainer>
-                  </div>
-                  <div className={Styles.vision_flex_txt}>
-                    <h3 className={Styles.vision_title}>
-                      <ScrollRevealContainer move='right'>
-                        <span className={Styles.en}>
-                          Emission
-                          <br />
-                          free
-                        </span>
-                      </ScrollRevealContainer>
-                      <ScrollRevealContainer move='right'>
-                        <span>エミッションフリー</span>
-                      </ScrollRevealContainer>
-                    </h3>
-                    <ScrollRevealContainer move='right'>
-                      <p>
-                        ソーラーパネルを搭載したEV自律航行船を用いて物流・移動時の環境負荷を低減します。
-                      </p>
-                    </ScrollRevealContainer>
-                  </div>
-                </li>
-                <li>
-                  <div className={Styles.vision_flex_img}>
-                    <ScrollRevealContainer move='bottom' size='small'>
-                      <div className={`${Styles.img_circle} ${Styles.vision_img}`}>
-                        <div className={Styles.img_circle_inner}>
-                          <Image
-                            src='/vision_3.jpg'
-                            alt='好きなときに乗れる'
-                            layout={'fill'}
-                            objectFit={'cover'}
-                          />
-                        </div>
-                      </div>
-                    </ScrollRevealContainer>
-                  </div>
-                  <div className={Styles.vision_flex_txt}>
-                    <h3 className={Styles.vision_title}>
-                      <ScrollRevealContainer move='right'>
-                        <span className={Styles.en}>
-                          On demand
-                          <br />
-                          Vessel
-                        </span>
-                      </ScrollRevealContainer>
-                      <ScrollRevealContainer move='right'>
-                        <span>好きなときに乗れる</span>
-                      </ScrollRevealContainer>
-                    </h3>
-                    <ScrollRevealContainer move='right'>
-                      <p>
-                        小型のEV自律航行船をネットワークを介して管理し、利用者が好きな時間に移動できるなどの水上移動を容易にするサービスの実現を目指します。
-                      </p>
-                    </ScrollRevealContainer>
-                  </div>
-                </li>
-                <li>
-                  <div className={Styles.vision_flex_img}>
-                    <ScrollRevealContainer move='bottom' size='small'>
-                      <div className={`${Styles.img_circle} ${Styles.vision_img}`}>
-                        <div className={Styles.img_circle_inner}>
-                          <Image
-                            src='/vision_4.jpg'
-                            alt='変わる暮らし'
-                            layout={'fill'}
-                            objectFit={'cover'}
-                          />
-                        </div>
-                      </div>
-                    </ScrollRevealContainer>
-                  </div>
-                  <div className={Styles.vision_flex_txt}>
-                    <h3 className={Styles.vision_title}>
-                      <ScrollRevealContainer move='right'>
-                        <span className={Styles.en}>
-                          Change in
-                          <br />
-                          Lifestyle
-                        </span>
-                      </ScrollRevealContainer>
-                      <ScrollRevealContainer move='right'>
-                        <span>変わる暮らし</span>
-                      </ScrollRevealContainer>
-                    </h3>
-                    <ScrollRevealContainer move='right'>
-                      <p>
-                        離島ではより好きな時間に好きな場所に移動できるようになり、都心では人混みを避けて移動することができます。Withコロナ時代の新しいライフスタイルにあった移動を提案します。
-                      </p>
-                    </ScrollRevealContainer>
-                  </div>
-                </li>
+                    </div>
+                  </li>
+                ))}
               </ul>
             </div>
           </section>
+
+          <section>
+            <div className={Styles.section_inner}>
+              <div className={Styles.headline_box}>
+                <h2 className={Styles.headline}>
+                  <VisionIcon />
+                  <span className={Styles.headline_txt}>Technology</span>
+                </h2>
+                <p className={Styles.sub_headline}>Introduce Our Technology</p>
+              </div>
+            </div>
+          </section>
+
           <section className={Styles.bg_logo}>
             <Image
               alt='bgMark'
@@ -395,19 +303,20 @@ export default function Home({
                   <p className={Styles.sub_headline}>List of Blog Post</p>
                 </ScrollRevealContainer>
               </div>
-              <ul className={Styles.blog}>
-                {noteItem.slice(0, 10).map((note) => (
+              <ul className={`${Styles.blog} ${Styles.blog_features}`}>
+                {noteItem.slice(0, 4).map((note) => (
                   <li key={note.title}>
                     <ScrollRevealContainer>
                       <Link href={note.link}>
                         <a target='_blank'>
-                          <img src={note.thumb} alt={note.title} />
+                          <div className={Styles.img_box}>
+                            <img src={note.thumb} alt={note.title} />
+                          </div>
                           <div className={Styles.blog_txt}>
                             <h3 className={Styles.blog_title}>{note.title}</h3>
                             <p className={Styles.blog_date}>
                               <Moment format='YYYY.MM.DD'>{note.pubDate}</Moment>
                             </p>
-                            <p className={Styles.blog_descripiton}> {note.contentSnippet}</p>
                           </div>
                         </a>
                       </Link>
@@ -436,8 +345,9 @@ import Parser from 'rss-parser';
 import { ST } from 'next/dist/shared/lib/utils';
 
 export const getStaticProps = async () => {
-  const newsData: Contents = await client.get({ endpoint: 'news' });
+  const newsData: Contents = await client.get({ endpoint: 'news', queries: { limit: 4 } });
   const staffData: Contents = await client.get({ endpoint: 'staff' });
+  const visionData: Contents = await client.get({ endpoint: 'vision' });
 
   const parser = new Parser({
     customFields: {
@@ -451,6 +361,7 @@ export const getStaticProps = async () => {
       noteItem: rssNote.items,
       newsItem: newsData.contents,
       staffItem: staffData.contents,
+      visionItem: visionData.contents,
     },
   };
 };

@@ -8,6 +8,8 @@
 .footer_inner {
   padding: 4vw;
   position: relative;
+  max-width: 1240px;
+  margin: 0 auto;
 }
 
 .footer_logo {

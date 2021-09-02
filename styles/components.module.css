@@ -119,7 +119,7 @@
 }
 
 .headline_box {
-  margin: 0;
+  margin: 0 0;
   padding: 0;
 }
 
@@ -283,6 +283,10 @@
 
   .content_flex_right {
     width: 100%;
+  }
+
+  .headline_box {
+    margin: 0 0 6vw;
   }
 
   .headline_2 {
@@ -545,13 +549,14 @@ ul.vision_flex li:nth-child(even) .vision_flex_img {
     left: 0;
     top: auto;
     transform: translate(0, 0);
-    padding: 84vw 0 0 0;
+    padding: 0 0 0 0;
   }
 
   .vision_flex_img {
     position: absolute;
-    left: 0;
+    left: auto;
     top: 0;
+    right: -10vw;
     transform: translate(0, 0);
   }
 
@@ -561,32 +566,38 @@ ul.vision_flex li:nth-child(even) .vision_flex_img {
   }
 
   .vision_title span {
+    margin: 6vw 0 0 0;
     font-size: 1.8rem;
   }
 
   .vision_title span.en {
-    font-size: 14vw;
+    font-size: 10vw;
+    margin: 0;
+    width: 70%;
+    min-height: 70vw;
+    display: flex;
+    align-items: center;
   }
 
   .vision_img {
-    width: 110vw;
-    height: 110vw;
+    width: 70vw;
+    height: 70vw;
   }
 
   ul.vision_flex li:nth-child(even) .vision_flex_txt {
     width: 100%;
     position: relative;
     left: 0;
-    right: auto;
     top: auto;
     transform: translate(0, 0);
+    padding: 0 0 0 0;
   }
 
   ul.vision_flex li:nth-child(even) .vision_flex_img {
     position: absolute;
     left: auto;
-    right: auto;
-    top: auto;
+    top: 0;
+    right: -10vw;
     transform: translate(0, 0);
   }
 }
@@ -723,7 +734,7 @@ ul.blog li a img {
 }
 
 .blog_txt {
-  padding: 15px 20px 15px;
+  padding: 10px 15px;
 }
 
 h3.blog_title {
@@ -777,6 +788,51 @@ h3.blog_title {
 
   .blog_txt {
     padding: 5px 5px 20px;
+  }
+
+  ul.blog_features {
+    margin: 0 0 6vw;
+  }
+
+  ul.blog_features li {
+    border-radius: 0;
+    overflow: visible;
+  }
+
+  ul.blog_features li a {
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+
+  ul.blog_features li a .img_box {
+    width: 30%;
+    position: relative;
+    z-index: 2;
+    overflow: hidden;
+  }
+
+  ul.blog_features li a .img_box::before {
+    padding: 100% 0 0 0;
+    content: ' ';
+    display: block;
+  }
+
+  ul.blog_features li a .img_box img {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: auto;
+    height: 100%;
+  }
+
+  ul.blog_features li a .blog_txt {
+    width: calc(70% - 15px);
+    margin: 0 0 0 15px;
+  }
+
+  ul.blog_features li a h3 {
+    font-size: 1rem;
   }
 }
 
