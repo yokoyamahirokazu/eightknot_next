@@ -166,3 +166,7 @@ textarea {
 input[type='button'] {
   -webkit-appearance: none;
 }
+
+p {
+  line-height: 1.7;
+}

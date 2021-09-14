@@ -43,6 +43,7 @@ interface Article {
   name: string;
   post: string;
   url: string;
+  youtube: string;
 }
 interface Contents {
   contents: Article[];
@@ -84,7 +85,12 @@ export default function Home({
   techItem: {
     id: string;
     title: string;
+    titleEnglish: string;
     body: string;
+    img: {
+      url: string;
+    };
+    youtube: string;
   }[];
   noteItem: {
     thumb: string;
@@ -237,8 +243,8 @@ export default function Home({
             </div>
           </section>
 
-          <section>
-            <div className={Styles.section_inner}>
+          <section className={Styles.bg_light}>
+            <div className={Styles.tech_box_headeline}>
               <div className={Styles.headline_box}>
                 <h2 className={Styles.headline}>
                   <FiCpu />
@@ -246,19 +252,52 @@ export default function Home({
                 </h2>
                 <p className={Styles.sub_headline}>Introduce Our Technology</p>
               </div>
-
-              {techItem.map((tech) => (
-                <div key={tech.id}>
-                  {tech.title}
-
-                  <div
-                    dangerouslySetInnerHTML={{
-                      __html: `${tech.body}`,
-                    }}
-                  />
-                </div>
-              ))}
             </div>
+
+            {techItem.map((tech) => (
+              <div key={tech.id}>
+                {tech.youtube != null ? (
+                  <div className={Styles.tech_box_youtube}>
+                    <div className={Styles.tech_box_youtube_inner}>
+                      <div
+                        dangerouslySetInnerHTML={{
+                          __html: `${tech.youtube}`,
+                        }}
+                      />
+                    </div>
+                  </div>
+                ) : (
+                  <div className={Styles.tech_box}>
+                    <Image
+                      src={tech.img.url}
+                      alt={tech.title}
+                      layout={'fill'}
+                      objectFit={'cover'}
+                    />
+                    <div className={Styles.tech_box_main_img}>
+                      <Image
+                        src={tech.img.url}
+                        alt={tech.title}
+                        layout={'responsive'}
+                        objectFit={'cover'}
+                        width={400}
+                        height={200}
+                      />
+                    </div>
+
+                    <div className={Styles.tech_box_txt}>
+                      <p className={Styles.tech_box_title_en}>{tech.titleEnglish}</p>
+                      <h3>{tech.title}</h3>
+                      <div
+                        dangerouslySetInnerHTML={{
+                          __html: `${tech.body}`,
+                        }}
+                      />
+                    </div>
+                  </div>
+                )}
+              </div>
+            ))}
           </section>
 
           <section className={Styles.bg_logo}>
