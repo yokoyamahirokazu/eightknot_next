@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import Head from 'next/head';
 import Image from 'next/image';
 import dynamic from 'next/dynamic';
@@ -22,6 +23,26 @@ import { HiOutlinePencil } from 'react-icons/hi';
 import { BiUserPin } from 'react-icons/bi';
 import { FaFacebook, FaTwitter } from 'react-icons/fa';
 import { AiOutlineTeam } from 'react-icons/ai';
+import Modal from 'react-modal';
+
+const modalStyle = {
+  overlay: {
+    position: 'fixed',
+    top: 0,
+    left: 0,
+    backgroundColor: 'rgba(0,0,0,0.5)',
+    zIndex: 100,
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  content: {
+    backgroundColor: '#fff',
+    borderRadius: '1rem',
+    padding: '1.5rem',
+    position: 'relative',
+  },
+};
 
 interface Article {
   id: string;
@@ -41,7 +62,9 @@ interface Article {
     url: string;
   };
   name: string;
+  nameJP: string;
   post: string;
+  profile: string;
   url: string;
   youtube: string;
 }
@@ -51,7 +74,7 @@ interface Contents {
 
 export default function Home({
   newsItem,
-  staffItem,
+  teamItem,
   visionItem,
   techItem,
   noteItem,
@@ -65,10 +88,12 @@ export default function Home({
     publishedAt: string;
     blankLink: string;
   }[];
-  staffItem: {
+  teamItem: {
     id: string;
     name: string;
     post: string;
+    profile: string;
+    nameJP: string;
     image: {
       url: string;
     };
@@ -100,6 +125,14 @@ export default function Home({
     contentSnippet: string;
   }[];
 }): JSX.Element {
+  const [selectedItem, setIsOpen] = useState<string>('');
+  const openModal = (name: string) => {
+    setIsOpen(name);
+  };
+
+  const closeModal = () => {
+    setIsOpen('');
+  };
   return (
     <div>
       <CommonMeta />
@@ -257,44 +290,58 @@ export default function Home({
             {techItem.map((tech) => (
               <div key={tech.id}>
                 {tech.youtube != null ? (
-                  <div className={Styles.tech_box_youtube}>
-                    <div className={Styles.tech_box_youtube_inner}>
-                      <div
-                        dangerouslySetInnerHTML={{
-                          __html: `${tech.youtube}`,
-                        }}
-                      />
+                  <ScrollRevealContainer move='bottom'>
+                    <div className={Styles.tech_box_youtube}>
+                      <div className={Styles.tech_box_youtube_inner}>
+                        <div
+                          dangerouslySetInnerHTML={{
+                            __html: `${tech.youtube}`,
+                          }}
+                        />
+                      </div>
                     </div>
-                  </div>
+                  </ScrollRevealContainer>
                 ) : (
-                  <div className={Styles.tech_box}>
-                    <Image
-                      src={tech.img.url}
-                      alt={tech.title}
-                      layout={'fill'}
-                      objectFit={'cover'}
-                    />
-                    <div className={Styles.tech_box_main_img}>
-                      <Image
-                        src={tech.img.url}
-                        alt={tech.title}
-                        layout={'responsive'}
-                        objectFit={'cover'}
-                        width={400}
-                        height={200}
-                      />
-                    </div>
+                  <ScrollRevealContainer move='right'>
+                    <div className={Styles.tech_box}>
+                      <div className={Styles.tech_box_img}>
+                        <Image
+                          src={tech.img.url}
+                          alt={tech.title}
+                          layout={'fill'}
+                          objectFit={'cover'}
+                          width={1440}
+                          height={960}
+                        />
+                      </div>
 
-                    <div className={Styles.tech_box_txt}>
-                      <p className={Styles.tech_box_title_en}>{tech.titleEnglish}</p>
-                      <h3>{tech.title}</h3>
-                      <div
-                        dangerouslySetInnerHTML={{
-                          __html: `${tech.body}`,
-                        }}
-                      />
+                      <div className={Styles.tech_box_txt_bg}>
+                        <div className={Styles.tech_box_txt_bg_circle}>
+                          <Image
+                            src={tech.img.url}
+                            alt={tech.title}
+                            layout={'fill'}
+                            objectFit={'cover'}
+                          />
+                        </div>
+                        <div className={Styles.tech_box_txt}>
+                          <ScrollRevealContainer move='right'>
+                            <p className={Styles.tech_box_title_en}>{tech.titleEnglish}</p>
+                          </ScrollRevealContainer>
+                          <ScrollRevealContainer move='right'>
+                            <h3>{tech.title}</h3>
+                          </ScrollRevealContainer>
+                          <ScrollRevealContainer move='right'>
+                            <div
+                              dangerouslySetInnerHTML={{
+                                __html: `${tech.body}`,
+                              }}
+                            />
+                          </ScrollRevealContainer>
+                        </div>
+                      </div>
                     </div>
-                  </div>
+                  </ScrollRevealContainer>
                 )}
               </div>
             ))}
@@ -329,14 +376,15 @@ export default function Home({
               </div>
 
               <ul className={Styles.team_list}>
-                {staffItem.map((staff) => (
-                  <li key={staff.id}>
+                {teamItem.map((team) => (
+                  <li key={team.id}>
+                    {/* <div onClick={() => openModal(team.id)}> */}
                     <ScrollRevealContainer move='bottom'>
                       <div className={`${Styles.img_circle} ${Styles.team_list_img}`}>
                         <div className={Styles.img_circle_inner}>
                           <Image
-                            src={staff.image.url}
-                            alt={staff.name}
+                            src={team.image.url}
+                            alt={team.name}
                             width={240}
                             height={240}
                             layout={'fill'}
@@ -345,10 +393,39 @@ export default function Home({
                         </div>
                       </div>
                       <div className={Styles.team_list_info}>
-                        <h3 className={Styles.team_list_name}>{staff.name}</h3>
-                        <p className={Styles.team_list_post}>{staff.post}</p>
+                        <h3 className={Styles.team_list_name}>
+                          {team.nameJP}
+                          <span>{team.name}</span>
+                        </h3>
+                        <p className={Styles.team_list_post}>{team.post}</p>
                       </div>
                     </ScrollRevealContainer>
+                    {/* </div> */}
+                    <Modal
+                      style={modalStyle}
+                      isOpen={team.id === selectedItem}
+                      onRequestClose={closeModal}
+                      leastDestructiveRef={undefined}
+                      autoFocus={false}
+                      isCentered
+                    >
+                      <div>
+                        <Image src={team.image.url} alt={team.name} width={360} height={360} />
+                      </div>
+
+                      <p>{team.name}</p>
+                      <p>{team.nameJP}</p>
+                      <p>{team.post}</p>
+                      <div
+                        dangerouslySetInnerHTML={{
+                          __html: `${team.profile}`,
+                        }}
+                      />
+                      <div>テキストテキスト</div>
+                      <button className={Styles.btn} onClick={() => setIsOpen('')}>
+                        Close
+                      </button>
+                    </Modal>
                   </li>
                 ))}
               </ul>
@@ -412,7 +489,7 @@ import { ST } from 'next/dist/shared/lib/utils';
 
 export const getStaticProps = async () => {
   const newsData: Contents = await client.get({ endpoint: 'news', queries: { limit: 4 } });
-  const staffData: Contents = await client.get({ endpoint: 'staff' });
+  const teamData: Contents = await client.get({ endpoint: 'team' });
   const visionData: Contents = await client.get({ endpoint: 'vision' });
   const techData: Contents = await client.get({ endpoint: 'technology' });
 
@@ -427,7 +504,7 @@ export const getStaticProps = async () => {
     props: {
       noteItem: rssNote.items,
       newsItem: newsData.contents,
-      staffItem: staffData.contents,
+      teamItem: teamData.contents,
       visionItem: visionData.contents,
       techItem: techData.contents,
     },

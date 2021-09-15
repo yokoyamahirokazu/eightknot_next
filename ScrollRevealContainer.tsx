@@ -13,7 +13,7 @@ const ScrollRevealContainer: FC<ScrollRevealContainerProps> = ({ children, move,
     if (sectionRef.current)
       scrollReveal().reveal(sectionRef.current, {
         reset: false,
-        delay: 0,
+        delay: 200,
         duration: 600,
         interval: 100,
         opacity: 0,
