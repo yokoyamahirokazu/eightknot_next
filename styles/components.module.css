@@ -1207,7 +1207,7 @@ ul.breadcrumbs li a svg {
 }
 
 .tech_box_txt_bg_circle {
-  left: -46vw;
+  left: -43vw;
   top: 50%;
   width: 90vw;
   height: 90vw;
@@ -1241,7 +1241,7 @@ ul.breadcrumbs li a svg {
 }
 
 .tech_box_txt {
-  padding: 6vw 3vw;
+  padding: 8vw 1vw 8vw 3vw;
   z-index: 2;
   color: #fff;
   position: relative;
@@ -1306,7 +1306,7 @@ ul.breadcrumbs li a svg {
   font-size: 2.6vw;
   font-weight: normal;
   display: block;
-  margin: 0 0 1.6vw;
+  margin: 0 0 2vw;
 }
 
 .tech_box_headeline {
@@ -1319,7 +1319,7 @@ ul.breadcrumbs li a svg {
 }
 @media screen and (min-width: 1300px) {
   .tech_box_txt_bg_circle {
-    left: -760px;
+    left: -720px;
     width: 1300px;
     height: 1300px;
   }
