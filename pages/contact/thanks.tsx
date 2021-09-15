@@ -39,7 +39,7 @@ export default function thanks() {
           </div>
           <div className={Styles.news_flex_right}>
             <ScrollRevealContainer move='right'>
-              <h2 className={Styles.headline_2}>Thank You Very Much for Inquiring</h2>
+              <h2 className={Styles.headline_2}>Thank you for contacting us.</h2>
             </ScrollRevealContainer>
             <div className={Styles.content_box}>
               <ScrollRevealContainer move='right'>
