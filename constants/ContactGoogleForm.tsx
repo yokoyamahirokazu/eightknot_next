@@ -1,6 +1,6 @@
 export const ContactGoogleForm = {
   action:
-    'https://docs.google.com/forms/u/0/d/e/1FAIpQLScpnPNQyphjx5cfPcsDvfTZWJiPYb7BAKtXas2adjpMct8prg/formResponse',
+    'https://docs.google.com/forms/u/0/d/e/1FAIpQLScFI-tDYvaXFl8tUebjSexN-gjWGOI3RT5J1dgmgU3GCHUODQ/formResponse',
   email: 'entry.696510778',
   name: 'entry.1810091945',
   company: 'entry.822229734',
