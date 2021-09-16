@@ -1241,7 +1241,7 @@ ul.breadcrumbs li a svg {
 }
 
 .tech_box_txt {
-  padding: 8vw 1vw 8vw 3vw;
+  padding: 6vw 1vw 6vw 3vw;
   z-index: 2;
   color: #fff;
   position: relative;
@@ -1335,6 +1335,10 @@ ul.breadcrumbs li a svg {
     left: -66%;
     width: 1300px;
     height: 1300px;
+  }
+
+  .tech_box_txt {
+    padding: 60px 20px 60px 40px;
   }
 }
 
