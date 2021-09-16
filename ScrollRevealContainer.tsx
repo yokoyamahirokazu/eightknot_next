@@ -14,6 +14,8 @@ const ScrollRevealContainer: FC<ScrollRevealContainerProps> = ({ children, move,
       scrollReveal().reveal(sectionRef.current, {
         reset: false,
         delay: 200,
+        duration: 600,
+        interval: 100,
         opacity: 0,
         origin:
           move === 'left' ? 'left' : move === 'right' ? 'right' : move === 'top' ? 'top' : 'bottom',

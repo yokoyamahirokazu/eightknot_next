@@ -62,8 +62,12 @@ body {
 }
 
 a {
-  color: inherit;
+  color: var(--secondary-500);
   text-decoration: none;
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+  transition: all 0.3s ease;
 }
 
 * {
@@ -161,4 +165,8 @@ textarea {
 
 input[type='button'] {
   -webkit-appearance: none;
+}
+
+p {
+  line-height: 1.7;
 }

@@ -1,14 +1,13 @@
 import Link from 'next/link';
 import Styles from '../../styles/header.module.css';
-import HomeIcon from '../../public/icon/home.svg';
-import NewsIcon from '../../public/icon/news.svg';
-import BlogIcon from '../../public/icon/blog.svg';
-import AboutIcon from '../../public/icon/about.svg';
-import ContactIcon from '../../public/icon/contact.svg';
-import FacebookIcon from '../../public/icon/facebook.svg';
-import TwitterIcon from '../../public/icon/twitter.svg';
 import Logo from '../../public/icon/EightKnot_logo_horizontal.svg';
 import { useState } from 'react';
+
+import { FiHome, FiInfo, FiMail } from 'react-icons/fi';
+import { BiMessageDetail } from 'react-icons/bi';
+import { HiOutlinePencil } from 'react-icons/hi';
+import { BiUserPin } from 'react-icons/bi';
+import { FaFacebook, FaTwitter } from 'react-icons/fa';
 
 export default function Header(props) {
   const [isModal, setIsModal] = useState(false);
@@ -42,7 +41,7 @@ export default function Header(props) {
             <li>
               <Link href='/'>
                 <a>
-                  <HomeIcon />
+                  <FiHome />
                   Home
                 </a>
               </Link>
@@ -50,7 +49,7 @@ export default function Header(props) {
             <li>
               <Link href='/news'>
                 <a>
-                  <NewsIcon />
+                  <BiMessageDetail />
                   News
                 </a>
               </Link>
@@ -59,7 +58,7 @@ export default function Header(props) {
             <li>
               <Link href='https://note.com/8kt/'>
                 <a target='_blank'>
-                  <BlogIcon />
+                  <HiOutlinePencil />
                   Blog
                 </a>
               </Link>
@@ -67,28 +66,36 @@ export default function Header(props) {
             <li>
               <Link href='/about'>
                 <a>
-                  <AboutIcon />
+                  <FiInfo />
                   About
                 </a>
               </Link>
             </li>
+            {/* <li>
+              <Link href='/'>
+                <a>
+                  <BiUserPin />
+                  Recruit
+                </a>
+              </Link>
+            </li> */}
             <li>
               <Link href='/contact'>
                 <a>
-                  <ContactIcon />
+                  <FiMail />
                   Contact
                 </a>
               </Link>
             </li>
             <li className={Styles.sns_link}>
-              <Link href='/contact'>
+              <Link href='https://www.facebook.com/8ktjp'>
                 <a target='_blank'>
-                  <FacebookIcon />
+                  <FaFacebook />
                 </a>
               </Link>
-              <Link href='/contact'>
+              <Link href='https://twitter.com/8ktjp'>
                 <a target='_blank'>
-                  <TwitterIcon />
+                  <FaTwitter />
                 </a>
               </Link>
             </li>
