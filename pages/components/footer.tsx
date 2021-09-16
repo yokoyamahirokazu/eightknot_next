@@ -44,13 +44,13 @@ export default function Header() {
               </a>
             </Link>
           </li>
-          <li>
+          {/* <li>
             <Link href='/'>
               <a>
                 <BiUserPin /> Recruit
               </a>
             </Link>
-          </li>
+          </li> */}
           <li>
             <Link href='/contact'>
               <a>

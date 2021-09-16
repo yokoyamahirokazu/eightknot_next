@@ -97,7 +97,7 @@ export default function About({
                               <br />
                               大阪市堺市堺区北波止町10 <br />
                               <br />
-                              東京オフィス #アクセス
+                              東京オフィス
                               <br />
                               〒130-0003
                               <br />
