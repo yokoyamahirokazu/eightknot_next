@@ -15,14 +15,14 @@ export default function CommonMeta({
       <meta property='og:site_name' content={description} />
       <meta property='og:description' content={description} />
       <meta property='og:url' content='https://8kt.jp/' />
-      <meta property='og:image' content='/og_image.png' />
+      <meta property='og:image' content='https://8kt.jp/og_image.png' />
       <meta property='og:image:width' content='512' />
       <meta property='og:image:height' content='512' />
       <meta name='twitter:card' content='summary' />
       <meta name='twitter:site' content='@8ktjp' />
       <meta name='twitter:domain' content='8kt.jp' />
       <meta name='twitter:title' content={title} />
-      <meta name='twitter:image' content='/og_image.png' />
+      <meta name='twitter:image' content='https://8kt.jp/og_image.png' />
       <link rel='shortcut icon' href='/favicon.ico' />
       <link rel='shortcut icon' type='image/x-icon' href='/favicon.svg' />
       <link rel='apple-touch-icon' sizes='180x180' href='/apple-touch-icon-180x180.png' />
