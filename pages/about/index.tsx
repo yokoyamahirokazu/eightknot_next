@@ -95,7 +95,7 @@ export default function About({
                               <br />
                               〒590-0986
                               <br />
-                              大阪市堺市堺区北波止町10 <br />
+                              大阪府堺市堺区北波止町10 <br />
                               <br />
                               東京オフィス
                               <br />
