@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import Content from '../components/lower';
+import Content from '../../components/lower';
 import { client } from '../../libs/client';
 import Styles from '../../styles/components.module.css';
 import NewsIcon from '../../public/icon/news.svg';
@@ -8,8 +8,8 @@ import TwitterIcon from '../../public/icon/twitter.svg';
 import BlankIcon from '../../public/icon/blank.svg';
 import ShareIcon from '../../public/icon/share.svg';
 import Moment from 'react-moment';
-import Breadcrumb from '../components/breadcrumbs';
-import CommonMeta from '../components/CommonMeta';
+import Breadcrumb from '../../components/breadcrumbs';
+import CommonMeta from '../../components/CommonMeta';
 import dynamic from 'next/dynamic';
 const ScrollRevealContainer = dynamic(import('../../ScrollRevealContainer'), { ssr: false });
 import { BiMessageDetail } from 'react-icons/bi';
@@ -147,7 +147,12 @@ export default function NewsIndex({
 }
 
 export const getStaticPaths = async () => {
-  const data: Contents = await client.get({ endpoint: 'news' });
+  const data: Contents = await client.get({
+    endpoint: 'news',
+    queries: {
+      limit: 3000,
+    },
+  });
 
   const paths = data.contents.map((content) => `/news/${content.id}`);
   return { paths, fallback: false };
@@ -156,7 +161,12 @@ export const getStaticPaths = async () => {
 export const getStaticProps = async (context) => {
   const id = context.params.id;
   const data: Contents = await client.get({ endpoint: 'news', contentId: id });
-  const newsData: Contents = await client.get({ endpoint: 'news' });
+  const newsData: Contents = await client.get({
+    endpoint: 'news',
+    queries: {
+      limit: 5,
+    },
+  });
 
   return {
     props: {

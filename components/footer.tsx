@@ -1,11 +1,10 @@
 import Link from 'next/link';
-import Styles from '../../styles/footer.module.css';
+import Styles from '../styles/footer.module.css';
 import { FiHome, FiInfo, FiMail } from 'react-icons/fi';
 import { BiMessageDetail } from 'react-icons/bi';
 import { HiOutlinePencil } from 'react-icons/hi';
-import { BiUserPin } from 'react-icons/bi';
 import { FaFacebook, FaTwitter } from 'react-icons/fa';
-import LogoVertical from '../../public/icon/EightKnot_vertical_B.svg';
+import LogoVertical from '../public/icon/EightKnot_vertical_B.svg';
 
 export default function Header() {
   return (
@@ -23,7 +22,7 @@ export default function Header() {
             </Link>
           </li>
           <li>
-            <Link href='/news'>
+            <Link href='/news/page/1'>
               <a>
                 <BiMessageDetail /> News
               </a>

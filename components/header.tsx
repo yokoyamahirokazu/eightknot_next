@@ -1,12 +1,10 @@
 import Link from 'next/link';
-import Styles from '../../styles/header.module.css';
-import Logo from '../../public/icon/EightKnot_logo_horizontal.svg';
+import Styles from '../styles/header.module.css';
+import Logo from '../public/icon/EightKnot_logo_horizontal.svg';
 import { useState } from 'react';
-
 import { FiHome, FiInfo, FiMail } from 'react-icons/fi';
 import { BiMessageDetail } from 'react-icons/bi';
 import { HiOutlinePencil } from 'react-icons/hi';
-import { BiUserPin } from 'react-icons/bi';
 import { FaFacebook, FaTwitter } from 'react-icons/fa';
 
 export default function Header(props) {
@@ -47,7 +45,7 @@ export default function Header(props) {
               </Link>
             </li>
             <li>
-              <Link href='/news'>
+              <Link href='/news/page/1'>
                 <a>
                   <BiMessageDetail />
                   News
