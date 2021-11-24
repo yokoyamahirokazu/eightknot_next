@@ -35,7 +35,7 @@ type PageProps = {
 const Page: NextPage<PageProps> = (props) => {
   const router = useRouter();
   if (router.isFallback) {
-    return <>読み込み中</>;
+    return <>読み込み中です</>;
   }
   return (
     <>
