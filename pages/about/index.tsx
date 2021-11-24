@@ -1,15 +1,13 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import Content from '../components/lower';
+import Content from '../../components/lower';
 import { client } from '../../libs/client';
 import Styles from '../../styles/components.module.css';
-import AboutIcon from '../../public/icon/about.svg';
-import Breadcrumb from '../components/breadcrumbs';
-import Head from 'next/head';
-import CommonMeta from '../components/CommonMeta';
+import Breadcrumb from '../../components/breadcrumbs';
+import CommonMeta from '../../components/CommonMeta';
 import dynamic from 'next/dynamic';
 const ScrollRevealContainer = dynamic(import('../../ScrollRevealContainer'), { ssr: false });
-import { FiHome, FiInfo, FiMail, FiEye, FiCpu } from 'react-icons/fi';
+import { FiInfo } from 'react-icons/fi';
 
 interface Article {
   id: string;

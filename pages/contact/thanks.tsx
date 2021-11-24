@@ -1,15 +1,12 @@
 import Link from 'next/link';
-import Image from 'next/image';
 import React from 'react';
-import Head from 'next/head';
-import Breadcrumb from '../components/breadcrumbs';
-import Content from '../components/lower';
+import Breadcrumb from '../../components/breadcrumbs';
+import Content from '../../components/lower';
 import Styles from '../../styles/components.module.css';
-import ContactIcon from '../../public/icon/contact.svg';
-import CommonMeta from '../components/CommonMeta';
+import CommonMeta from '../../components/CommonMeta';
 import dynamic from 'next/dynamic';
 const ScrollRevealContainer = dynamic(import('../../ScrollRevealContainer'), { ssr: false });
-import { FiHome, FiInfo, FiMail, FiEye, FiCpu } from 'react-icons/fi';
+import { FiMail } from 'react-icons/fi';
 
 export default function thanks() {
   return (

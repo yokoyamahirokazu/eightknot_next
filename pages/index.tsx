@@ -1,27 +1,20 @@
 import { useState } from 'react';
-import Head from 'next/head';
 import Image from 'next/image';
 import dynamic from 'next/dynamic';
-import Content from './components/content';
+import Content from '../components/content';
 import { client } from '../libs/client';
 import Link from 'next/link';
 import Styles from '../styles/components.module.css';
-import NewsIcon from '../public/icon/news.svg';
-import BlogIcon from '../public/icon/blog.svg';
+
 import BlankIcon from '../public/icon/blank.svg';
-import TeamIcon from '../public/icon/team.svg';
-import VisionIcon from '../public/icon/vision.svg';
-import RecruitIcon from '../public/icon/file.svg';
-import TechIcon from '../public/icon/tech.svg';
+
 import Moment from 'react-moment';
 const ScrollRevealContainer = dynamic(import('../ScrollRevealContainer'), { ssr: false });
-import CommonMeta from './components/CommonMeta';
+import CommonMeta from '../components/CommonMeta';
 
-import { FiHome, FiInfo, FiMail, FiEye, FiCpu } from 'react-icons/fi';
+import { FiEye, FiCpu } from 'react-icons/fi';
 import { BiMessageDetail } from 'react-icons/bi';
 import { HiOutlinePencil } from 'react-icons/hi';
-import { BiUserPin } from 'react-icons/bi';
-import { FaFacebook, FaTwitter } from 'react-icons/fa';
 import { AiOutlineTeam } from 'react-icons/ai';
 import Modal from 'react-modal';
 
@@ -222,7 +215,7 @@ export default function Home({
                 </ul>
                 <div className={Styles.view_more_box}>
                   <ScrollRevealContainer move='bottom'>
-                    <Link href='/news'>
+                    <Link href='/news/page/1'>
                       <a className={`${Styles.btn} ${Styles.btn_white}`}>View More</a>
                     </Link>
                   </ScrollRevealContainer>

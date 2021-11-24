@@ -1588,3 +1588,52 @@ ul.breadcrumbs li a svg {
     margin: 0 0 1.6rem;
   }
 } */
+
+/* pager */
+
+ul.pager {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 30px 0 0;
+}
+
+ul.pager li {
+  margin: 0 3px;
+}
+ul.pager li a {
+  font-size: 0.8rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 28px;
+  box-sizing: border-box;
+  min-width: 28px;
+  border-radius: 50%;
+  border: solid 1px var(--primary-500);
+  color: var(--primary-500);
+}
+
+ul.pager li a:hover {
+  background-color: #e6f6fd;
+  text-decoration: none;
+}
+
+ul.pager li.active a {
+  color: #fff;
+  background-color: var(--primary-500);
+}
+
+@media screen and (max-width: 840px) {
+  .categoryLinkBtnBox {
+    display: block;
+    max-width: 320px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+  .categoryLinkBtnBox a {
+    display: flex;
+    margin: 0 0 10px;
+  }
+}
+/* breadcrumb */
