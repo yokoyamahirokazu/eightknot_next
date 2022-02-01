@@ -426,6 +426,13 @@ export default function Home({
                   </li>
                 ))}
               </ul>
+              <div className={`${Styles.view_more_box} ${Styles.center}`}>
+                <ScrollRevealContainer move='bottom'>
+                  <Link href='https://www.wantedly.com/companies/eightknot'>
+                    <a className={`${Styles.btn} ${Styles.btn_white}`}>Recruit</a>
+                  </Link>
+                </ScrollRevealContainer>
+              </div>
             </div>
           </section>
           <section>

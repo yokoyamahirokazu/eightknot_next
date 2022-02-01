@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import Styles from '../styles/footer.module.css';
 import { FiHome, FiInfo, FiMail } from 'react-icons/fi';
-import { BiMessageDetail } from 'react-icons/bi';
+import { BiMessageDetail, BiUserPin } from 'react-icons/bi';
 import { HiOutlinePencil } from 'react-icons/hi';
 import { FaFacebook, FaTwitter } from 'react-icons/fa';
 import LogoVertical from '../public/icon/EightKnot_vertical_B.svg';
@@ -43,13 +43,14 @@ export default function Header() {
               </a>
             </Link>
           </li>
-          {/* <li>
-            <Link href='/'>
+          <li>
+            <Link href='https://www.wantedly.com/companies/eightknot'>
               <a>
-                <BiUserPin /> Recruit
+                <BiUserPin />
+                Recruit
               </a>
             </Link>
-          </li> */}
+          </li>
           <li>
             <Link href='/contact'>
               <a>
