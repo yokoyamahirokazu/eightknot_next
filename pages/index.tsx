@@ -391,10 +391,14 @@ export default function Home({
                           <span>{team.name}</span>
                         </h3>
                         <p className={Styles.team_list_post}>{team.post}</p>
+                        <div className={Styles.team_list_profile}
+                          dangerouslySetInnerHTML={{
+                            __html: `${team.profile}`,
+                          }} />
                       </div>
                     </ScrollRevealContainer>
                     {/* </div> */}
-                    <Modal
+                    < Modal
                       style={modalStyle}
                       isOpen={team.id === selectedItem}
                       onRequestClose={closeModal}
@@ -472,8 +476,8 @@ export default function Home({
             </div>
           </section>
         </main>
-      </Content>
-    </div>
+      </Content >
+    </div >
   );
 }
 

@@ -669,6 +669,12 @@ ul.team_list li:nth-child(3n + 1) {
   color: var(--primary-300);
 }
 
+.team_list_profile {
+  font-size: 0.9rem;
+  margin: 10px 0 0 0;
+  color: var(--white);
+}
+
 @media screen and (max-width: 960px) {
   ul.team_list li {
     width: calc(50% - 1vw);
