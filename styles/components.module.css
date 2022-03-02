@@ -611,12 +611,11 @@ ul.team_list {
   display: flex;
   flex-wrap: wrap;
   margin: 4vw auto 0;
-  max-width: 820px;
 }
 
 ul.team_list li {
   width: calc(50% - 1vw);
-  margin: 0 0 3vw 1vw;
+  margin: 0 0 1vw 1vw;
   padding: 10px;
   box-sizing: border-box;
   border-radius: 4px;
@@ -624,6 +623,7 @@ ul.team_list li {
   -moz-transition: all 0.2s ease;
   -o-transition: all 0.2s ease;
   transition: all 0.2s ease;
+  background-color: rgba(255, 255, 255, 0.1);
 }
 ul.team_list li section {
   display: flex;
@@ -636,7 +636,7 @@ ul.team_list li section {
 } */
 
 ul.team_list li:nth-child(odd) {
-  margin: 0 0 3vw;
+  margin: 0 0 1vw;
 }
 
 .team_list_img {
@@ -706,7 +706,6 @@ ul.team_list li:nth-child(odd) {
   ul.team_list li {
     width: 100%;
     margin: 0 0 3vw;
-    background-color: rgba(255, 255, 255, 0.1);
   }
 
   ul.team_list li:nth-child(3n + 1) {
@@ -1830,5 +1829,23 @@ ul.team_list_ver li .team_list_info .team_list_post {
   }
   ul.team_list_ver li:nth-child(2n) {
     margin: 0 0 48px 0;
+  }
+}
+
+.none_modal_inner {
+  color: #fff;
+}
+.none_modal_inner .modal_info_profile p {
+  font-size: 0.9rem;
+}
+
+.none_modal_inner .team_list_post {
+  color: var(--primary-200);
+}
+
+@media screen and (max-width: 1080px) {
+  .index_team_list ul.team_list li {
+    width: 100%;
+    margin: 0 0 1vw;
   }
 }
