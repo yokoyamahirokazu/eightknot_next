@@ -101,10 +101,13 @@ export default function Home({
   }[];
 }): JSX.Element {
   const team_1 = teamItem.filter((output) => {
-    return output.view == '1段目';
+    return output.view == '社内取締役';
   });
   const team_2 = teamItem.filter((output) => {
-    return output.view == '2段目';
+    return output.view == '社外取締役';
+  });
+  const team_3 = teamItem.filter((output) => {
+    return output.view == '顧問';
   });
 
   return (
@@ -383,6 +386,37 @@ export default function Home({
                     </li>
                   ))}
                   {team_2.map((team) => (
+                    <li key={team.id}>
+                      <ScrollRevealContainer move='bottom'>
+                        <div className={Styles.none_modal_inner}>
+                          <div className={Styles.modal_flex}>
+                            <div className={Styles.modal_img}>
+                              <Image
+                                src={team.image.url}
+                                alt={team.name}
+                                layout={'fill'}
+                                objectFit={'cover'}
+                              />
+                            </div>
+                            <div className={Styles.modal_info}>
+                              <h3 className={Styles.team_list_name}>
+                                {team.nameJP}
+                                <span>{team.name}</span>
+                              </h3>
+                              <p className={Styles.team_list_post}>{team.post}</p>
+                              <div
+                                className={Styles.modal_info_profile}
+                                dangerouslySetInnerHTML={{
+                                  __html: `${team.profile}`,
+                                }}
+                              />
+                            </div>
+                          </div>
+                        </div>
+                      </ScrollRevealContainer>
+                    </li>
+                  ))}
+                  {team_3.map((team) => (
                     <li key={team.id}>
                       <ScrollRevealContainer move='bottom'>
                         <div className={Styles.none_modal_inner}>

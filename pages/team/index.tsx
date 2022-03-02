@@ -65,16 +65,16 @@ export default function Team({
   }[];
 }): JSX.Element {
   const team_1 = TeamItem.filter((output) => {
-    return output.view == '1段目';
+    return output.view == '社内取締役';
   });
   const team_2 = TeamItem.filter((output) => {
-    return output.view == '2段目';
+    return output.view == '社外取締役';
   });
   const team_3 = TeamItem.filter((output) => {
-    return output.view == '3段目';
+    return output.view == '顧問';
   });
   const team_4 = TeamItem.filter((output) => {
-    return output.view == '4段目';
+    return output.view == '社員';
   });
 
   const [modalIsOpen, setModalIsOpen] = useState(false);
