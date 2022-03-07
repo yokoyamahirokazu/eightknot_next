@@ -16,26 +16,6 @@ import { FiEye, FiCpu } from 'react-icons/fi';
 import { BiMessageDetail } from 'react-icons/bi';
 import { HiOutlinePencil } from 'react-icons/hi';
 import { AiOutlineTeam } from 'react-icons/ai';
-import Modal from 'react-modal';
-
-const modalStyle = {
-  overlay: {
-    position: 'fixed',
-    top: 0,
-    left: 0,
-    backgroundColor: 'rgba(0,0,0,0.5)',
-    zIndex: 100,
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  content: {
-    backgroundColor: '#fff',
-    borderRadius: '1rem',
-    padding: '1.5rem',
-    position: 'relative',
-  },
-};
 
 interface Article {
   id: string;
@@ -60,6 +40,7 @@ interface Article {
   profile: string;
   url: string;
   youtube: string;
+  view?: string;
 }
 interface Contents {
   contents: Article[];
@@ -87,6 +68,7 @@ export default function Home({
     post: string;
     profile: string;
     nameJP: string;
+    view?: string;
     image: {
       url: string;
     };
@@ -118,14 +100,16 @@ export default function Home({
     contentSnippet: string;
   }[];
 }): JSX.Element {
-  const [selectedItem, setIsOpen] = useState<string>('');
-  const openModal = (name: string) => {
-    setIsOpen(name);
-  };
+  const team_1 = teamItem.filter((output) => {
+    return output.view == '社内取締役';
+  });
+  const team_2 = teamItem.filter((output) => {
+    return output.view == '社外取締役';
+  });
+  const team_3 = teamItem.filter((output) => {
+    return output.view == '顧問';
+  });
 
-  const closeModal = () => {
-    setIsOpen('');
-  };
   return (
     <div>
       <CommonMeta />
@@ -368,60 +352,113 @@ export default function Home({
                 </ScrollRevealContainer>
               </div>
 
-              <ul className={Styles.team_list}>
-                {teamItem.map((team) => (
-                  <li key={team.id}>
-                    {/* <div onClick={() => openModal(team.id)}> */}
-                    <ScrollRevealContainer move='bottom'>
-                      <div className={`${Styles.img_circle} ${Styles.team_list_img}`}>
-                        <div className={Styles.img_circle_inner}>
-                          <Image
-                            src={team.image.url}
-                            alt={team.name}
-                            width={240}
-                            height={240}
-                            layout={'fill'}
-                            objectFit={'cover'}
-                          />
+              <div className={Styles.index_team_list}>
+                <ul className={Styles.team_list}>
+                  {team_1.map((team) => (
+                    <li key={team.id}>
+                      <ScrollRevealContainer move='bottom'>
+                        <div className={Styles.none_modal_inner}>
+                          <div className={Styles.modal_flex}>
+                            <div className={Styles.modal_img}>
+                              <Image
+                                src={team.image.url}
+                                alt={team.name}
+                                layout={'fill'}
+                                objectFit={'cover'}
+                              />
+                            </div>
+                            <div className={Styles.modal_info}>
+                              <h3 className={Styles.team_list_name}>
+                                {team.nameJP}
+                                <span>{team.name}</span>
+                              </h3>
+                              <p className={Styles.team_list_post}>{team.post}</p>
+                              <div
+                                className={Styles.modal_info_profile}
+                                dangerouslySetInnerHTML={{
+                                  __html: `${team.profile}`,
+                                }}
+                              />
+                            </div>
+                          </div>
                         </div>
-                      </div>
-                      <div className={Styles.team_list_info}>
-                        <h3 className={Styles.team_list_name}>
-                          {team.nameJP}
-                          <span>{team.name}</span>
-                        </h3>
-                        <p className={Styles.team_list_post}>{team.post}</p>
-                      </div>
-                    </ScrollRevealContainer>
-                    {/* </div> */}
-                    <Modal
-                      style={modalStyle}
-                      isOpen={team.id === selectedItem}
-                      onRequestClose={closeModal}
-                      leastDestructiveRef={undefined}
-                      autoFocus={false}
-                      isCentered
-                    >
-                      <div>
-                        <Image src={team.image.url} alt={team.name} width={360} height={360} />
-                      </div>
-
-                      <p>{team.name}</p>
-                      <p>{team.nameJP}</p>
-                      <p>{team.post}</p>
-                      <div
-                        dangerouslySetInnerHTML={{
-                          __html: `${team.profile}`,
-                        }}
-                      />
-                      <div>テキストテキスト</div>
-                      <button className={Styles.btn} onClick={() => setIsOpen('')}>
-                        Close
-                      </button>
-                    </Modal>
-                  </li>
-                ))}
-              </ul>
+                      </ScrollRevealContainer>
+                    </li>
+                  ))}
+                  {team_2.map((team) => (
+                    <li key={team.id}>
+                      <ScrollRevealContainer move='bottom'>
+                        <div className={Styles.none_modal_inner}>
+                          <div className={Styles.modal_flex}>
+                            <div className={Styles.modal_img}>
+                              <Image
+                                src={team.image.url}
+                                alt={team.name}
+                                layout={'fill'}
+                                objectFit={'cover'}
+                              />
+                            </div>
+                            <div className={Styles.modal_info}>
+                              <h3 className={Styles.team_list_name}>
+                                {team.nameJP}
+                                <span>{team.name}</span>
+                              </h3>
+                              <p className={Styles.team_list_post}>{team.post}</p>
+                              <div
+                                className={Styles.modal_info_profile}
+                                dangerouslySetInnerHTML={{
+                                  __html: `${team.profile}`,
+                                }}
+                              />
+                            </div>
+                          </div>
+                        </div>
+                      </ScrollRevealContainer>
+                    </li>
+                  ))}
+                  {team_3.map((team) => (
+                    <li key={team.id}>
+                      <ScrollRevealContainer move='bottom'>
+                        <div className={Styles.none_modal_inner}>
+                          <div className={Styles.modal_flex}>
+                            <div className={Styles.modal_img}>
+                              <Image
+                                src={team.image.url}
+                                alt={team.name}
+                                layout={'fill'}
+                                objectFit={'cover'}
+                              />
+                            </div>
+                            <div className={Styles.modal_info}>
+                              <h3 className={Styles.team_list_name}>
+                                {team.nameJP}
+                                <span>{team.name}</span>
+                              </h3>
+                              <p className={Styles.team_list_post}>{team.post}</p>
+                              <div
+                                className={Styles.modal_info_profile}
+                                dangerouslySetInnerHTML={{
+                                  __html: `${team.profile}`,
+                                }}
+                              />
+                            </div>
+                          </div>
+                        </div>
+                      </ScrollRevealContainer>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <div
+                className={`${Styles.view_more_box} ${Styles.center}`}
+                style={{ margin: '32px 0 0 0' }}
+              >
+                <ScrollRevealContainer move='bottom'>
+                  <Link href='/team' as='/team'>
+                    <a className={`${Styles.btn} ${Styles.btn_white}`}>View More</a>
+                  </Link>
+                </ScrollRevealContainer>
+              </div>
             </div>
           </section>
           <section>

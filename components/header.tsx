@@ -6,6 +6,7 @@ import { FiHome, FiInfo, FiMail } from 'react-icons/fi';
 import { BiMessageDetail, BiUserPin } from 'react-icons/bi';
 import { HiOutlinePencil } from 'react-icons/hi';
 import { FaFacebook, FaTwitter } from 'react-icons/fa';
+import { AiOutlineTeam } from 'react-icons/ai';
 
 export default function Header(props) {
   const [isModal, setIsModal] = useState(false);
@@ -66,6 +67,14 @@ export default function Header(props) {
                 <a>
                   <FiInfo />
                   About
+                </a>
+              </Link>
+            </li>
+            <li>
+              <Link href='/team'>
+                <a>
+                  <AiOutlineTeam />
+                  Team
                 </a>
               </Link>
             </li>
