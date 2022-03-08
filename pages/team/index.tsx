@@ -83,9 +83,9 @@ export default function Team({
   return (
     <>
       <Content>
-        <CommonMeta title='About' description='当社についてご紹介するページです。' />
+        <CommonMeta title='Team' description='私たちのチームをご紹介します。' />
 
-        <Breadcrumb pageTitle='About' />
+        <Breadcrumb pageTitle='Team' />
         <section>
           <div className={`${Styles.team_page_inner} ${Styles.news_flex}`}>
             <div className={Styles.news_flex_left}>
