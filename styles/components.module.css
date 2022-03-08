@@ -645,7 +645,7 @@ ul.team_list li:nth-child(odd) {
 }
 
 .team_list_info {
-  width: calc(100% - 160px -20px);
+  width: calc(100% - 160px - 20px);
   display: block;
   color: var(--white);
   margin: 0 0 0 20px;
@@ -1664,6 +1664,7 @@ ul.team_list_ver {
   align-items: flex-start;
   justify-content: flex-start;
   flex-wrap: wrap;
+  margin: 4vw auto;
 }
 ul.team_list_ver li {
   width: calc(25% - 15px);
@@ -1751,12 +1752,6 @@ ul.team_list_ver li .team_list_info .team_list_post {
     width: auto;
     margin: 0 32px 48px 0;
   }
-  ul.team_list_ver li:nth-child(4n) {
-    margin: 0 32px 48px 0;
-  }
-  ul.team_list_ver li:nth-child(3n) {
-    margin: 0 0 48px 0;
-  }
 
   .team_page .team_list_img {
     width: 160px;
@@ -1776,15 +1771,6 @@ ul.team_list_ver li .team_list_info .team_list_post {
   ul.team_list_ver li {
     width: auto;
     margin: 0 32px 48px 0;
-  }
-  ul.team_list_ver li:nth-child(4n) {
-    margin: 0 32px 48px 0;
-  }
-  ul.team_list_ver li:nth-child(3n) {
-    margin: 0 32px 48px 0;
-  }
-  ul.team_list_ver li:nth-child(2n) {
-    margin: 0 0 48px 0;
   }
 
   ul.team_list_ver li .team_list_img {
@@ -1813,8 +1799,8 @@ ul.team_list_ver li .team_list_info .team_list_post {
   }
 
   ul.team_list_ver li .team_list_img {
-    width: 130px;
-    height: 130px;
+    width: 160px;
+    height: 160px;
   }
 
   ul.team_list_ver li {
