@@ -242,8 +242,7 @@ export default function Team({
                     </div>
                   </Modal>
                 )}
-
-                <ul className={Styles.team_list_ver}>
+                <ul className={Styles.team_list}>
                   {team_4.map((team) => (
                     <li key={team.id}>
                       <ScrollRevealContainer move='bottom'>
