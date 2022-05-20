@@ -2,7 +2,7 @@ import { client } from '../libs/client';
 import { IBlog, MicroCmsResponse, Queries } from '../types/interface';
 
 const defaultLimit = '10';
-const defaultMaxLimit = '50';
+const defaultMaxLimit = '200';
 
 const limit = parseInt(defaultLimit);
 const limitdefaultMaxLimit = parseInt(defaultMaxLimit);

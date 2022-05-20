@@ -281,7 +281,8 @@ export default function Team({
 }
 
 export const getStaticProps = async () => {
-  const teamData: Contents = await client.get({ endpoint: 'team' });
+  const teamData: Contents = await client.get({ endpoint: 'team', queries: { limit: 30 },
+ });
 
   return {
     props: {
